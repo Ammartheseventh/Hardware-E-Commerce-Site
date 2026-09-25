@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCartStore } from '../../store/useCartStore';
 
@@ -6,14 +5,6 @@ export default function Header() {
   const itemCount = useCartStore((state) =>
     state.items.reduce((sum, i) => sum + i.quantity, 0)
   );
-  const [pulse, setPulse] = useState(false);
-
-  useEffect(() => {
-    if (itemCount === 0) return;
-    setPulse(true);
-    const t = setTimeout(() => setPulse(false), 300);
-    return () => clearTimeout(t);
-  }, [itemCount]);
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
@@ -38,9 +29,8 @@ export default function Header() {
           Cart
           {itemCount > 0 && (
             <span
-              className={`absolute -top-2 -right-3 bg-black text-white text-xs rounded-full w-5 h-5 flex items-center justify-center transition-transform duration-200 ${
-                pulse ? 'scale-125' : 'scale-100'
-              }`}
+              key={itemCount}
+              className="absolute -top-2 -right-3 bg-black text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-pulse-scale"
             >
               {itemCount}
             </span>

@@ -12,7 +12,7 @@ export default function ProductCard({ product }) {
 
   return (
     <div className="group flex flex-col">
-      <div className="aspect-4/5 overflow-hidden bg-gray-100 rounded-lg">
+      <div className="aspect-square overflow-hidden bg-gray-100 rounded-lg">
         <img
           src={product.image}
           alt={product.name}

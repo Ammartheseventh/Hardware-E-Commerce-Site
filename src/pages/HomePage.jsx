@@ -1,18 +1,19 @@
 import { Link } from 'react-router-dom';
-import { products } from '../data/products';
+import { getFeatured } from '../api/products';
+import { useAsync } from '../hooks/useAsync';
 import ProductCard from '../components/catalog/ProductCard';
 
 export default function HomePage() {
-  const featured = products.slice(0, 4);
+  const { data: featured, loading } = useAsync(getFeatured);
 
   return (
     <div>
       <section className="max-w-7xl mx-auto px-4 py-24 text-center">
         <h1 className="text-4xl md:text-6xl font-semibold tracking-tight">
-          Build your dream rig.
+          Find the parts that matter.
         </h1>
         <p className="text-gray-500 mt-4 max-w-xl mx-auto">
-          Curated PC hardware, hand-picked for performance. Reserve online, pay in person.
+          Curated PC hardware, hand-picked for performance.
         </p>
         <Link
           to="/products"
@@ -33,11 +34,15 @@ export default function HomePage() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10">
-          {featured.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        {loading ? (
+          <p className="text-sm text-gray-500">Loading…</p>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10">
+            {featured.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        )}
       </section>
     </div>
   );
