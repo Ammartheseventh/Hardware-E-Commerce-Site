@@ -1,11 +1,14 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCartStore } from '../store/useCartStore';
 import CartItem from '../components/cart/CartItem';
+import BookingModal from '../components/cart/BookingModal';
 
 export default function CartPage() {
   const items = useCartStore((state) => state.items);
   const getTotal = useCartStore((state) => state.getTotal);
   const clearCart = useCartStore((state) => state.clearCart);
+  const [isBooking, setIsBooking] = useState(false);
 
   if (items.length === 0) {
     return (
@@ -64,7 +67,7 @@ export default function CartPage() {
             </div>
 
             <button
-              onClick={() => alert('Booking flow coming next')}
+              onClick={() => setIsBooking(true)}
               className="mt-6 w-full py-3 bg-black text-white text-sm font-medium rounded-md hover:bg-gray-800"
             >
               Book In-Person Payment
@@ -79,6 +82,8 @@ export default function CartPage() {
           </div>
         </div>
       </div>
+
+      <BookingModal isOpen={isBooking} onClose={() => setIsBooking(false)} />
     </div>
   );
 }

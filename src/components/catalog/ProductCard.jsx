@@ -1,7 +1,14 @@
 import { useCartStore } from '../../store/useCartStore';
+import { useToastStore } from '../../store/useToastStore';
 
 export default function ProductCard({ product }) {
   const addItem = useCartStore((state) => state.addItem);
+  const showToast = useToastStore((state) => state.show);
+
+  const handleAdd = () => {
+    addItem(product);
+    showToast(`${product.name} added to cart`);
+  };
 
   return (
     <div className="group flex flex-col">
@@ -27,7 +34,7 @@ export default function ProductCard({ product }) {
       </div>
 
       <button
-        onClick={() => addItem(product)}
+        onClick={handleAdd}
         disabled={!product.inStock}
         className="mt-3 w-full py-2 text-sm font-medium rounded-md border border-gray-300 hover:border-black hover:bg-black hover:text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-gray-900 disabled:hover:border-gray-300"
       >
