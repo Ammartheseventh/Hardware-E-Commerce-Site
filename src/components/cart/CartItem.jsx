@@ -1,13 +1,14 @@
 import { useCartStore } from '../../store/useCartStore';
+import { getCategoryName } from '../../data/categories';
 
 export default function CartItem({ item }) {
   const { removeItem, updateQuantity } = useCartStore();
 
   return (
     <div className="flex gap-4 py-6 border-b border-gray-200">
-      <div className="w-24 h-24 flex-shrink-0 bg-gray-100 rounded-md overflow-hidden">
+      <div className="w-24 h-24 shrink-0 bg-gray-100 rounded-md overflow-hidden">
         <img
-          src={item.image}
+          src={item.images[0]}
           alt={item.name}
           className="w-full h-full object-cover"
         />
@@ -21,7 +22,9 @@ export default function CartItem({ item }) {
               ${item.price * item.quantity}
             </span>
           </div>
-          <p className="text-xs text-gray-500 mt-1">{item.category}</p>
+          <p className="text-xs text-gray-500 mt-1">
+            {getCategoryName(item.category)}
+          </p>
         </div>
 
         <div className="flex items-center justify-between mt-4">

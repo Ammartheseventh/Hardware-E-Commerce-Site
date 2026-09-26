@@ -5,13 +5,13 @@ export const products = [
     brand: 'NVIDIA',
     partNumber: 'RTX4070-12G',
     price: 599,
-    image: 'https://placehold.co/600x600/1a1a1a/ffffff?text=RTX+4070',
     images: [
       'https://placehold.co/600x600/1a1a1a/ffffff?text=RTX+4070',
-      'https://placehold.co/600x600/2a2a2a/ffffff?text=RTX+4070+Front',
-      'https://placehold.co/600x600/3a3a3a/ffffff?text=RTX+4070+Back',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=RTX+4070+Front',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=RTX+4070+Back',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=RTX+4070+Ports',
     ],
-    category: 'GPUs',
+    category: 'gpus',
     description:
       'The RTX 4070 delivers exceptional 1440p gaming with 12GB of GDDR6X memory, DLSS 3, and full ray tracing support.',
     specs: {
@@ -31,12 +31,12 @@ export const products = [
     brand: 'AMD',
     partNumber: 'RYZEN7800X3D',
     price: 449,
-    image: 'https://placehold.co/600x600/1a1a1a/ffffff?text=7800X3D',
     images: [
       'https://placehold.co/600x600/1a1a1a/ffffff?text=7800X3D',
-      'https://placehold.co/600x600/2a2a2a/ffffff?text=7800X3D+Top',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=7800X3D+Top',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=7800X3D+Socket',
     ],
-    category: 'CPUs',
+    category: 'cpus',
     description:
       '8-core gaming processor with 3D V-Cache technology. The fastest gaming CPU in its class.',
     specs: {
@@ -57,10 +57,14 @@ export const products = [
     brand: 'Corsair',
     partNumber: 'CMK32GX5M2B6000C30',
     price: 129,
-    image: 'https://placehold.co/600x600/1a1a1a/ffffff?text=32GB+DDR5',
-    images: ['https://placehold.co/600x600/1a1a1a/ffffff?text=32GB+DDR5'],
-    category: 'Memory',
-    description: 'High-performance DDR5 memory kit optimized for AMD and Intel platforms.',
+    images: [
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=32GB+DDR5',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=DDR5+Module',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=DDR5+Heatsink',
+    ],
+    category: 'memory',
+    description:
+      'High-performance DDR5 memory kit optimized for AMD and Intel platforms.',
     specs: {
       Capacity: '32GB (2x16GB)',
       Speed: 'DDR5-6000',
@@ -78,10 +82,14 @@ export const products = [
     brand: 'Samsung',
     partNumber: 'MZ-V9P2T0BW',
     price: 189,
-    image: 'https://placehold.co/600x600/1a1a1a/ffffff?text=990+Pro',
-    images: ['https://placehold.co/600x600/1a1a1a/ffffff?text=990+Pro'],
-    category: 'Storage',
-    description: 'PCIe 4.0 NVMe SSD with sequential read speeds up to 7450 MB/s.',
+    images: [
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=990+Pro',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=990+Pro+Top',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=990+Pro+Angle',
+    ],
+    category: 'storage',
+    description:
+      'PCIe 4.0 NVMe SSD with sequential read speeds up to 7450 MB/s.',
     specs: {
       Capacity: '2TB',
       Interface: 'PCIe 4.0 x4',
@@ -99,10 +107,14 @@ export const products = [
     brand: 'ASUS',
     partNumber: 'ROG-B650E-F',
     price: 279,
-    image: 'https://placehold.co/600x600/1a1a1a/ffffff?text=B650E-F',
-    images: ['https://placehold.co/600x600/1a1a1a/ffffff?text=B650E-F'],
-    category: 'Motherboards',
-    description: 'AM5 motherboard with PCIe 5.0, WiFi 6E, and robust VRM cooling.',
+    images: [
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=B650E-F',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=B650E-F+IO',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=B650E-F+VRM',
+    ],
+    category: 'motherboards',
+    description:
+      'AM5 motherboard with PCIe 5.0, WiFi 6E, and robust VRM cooling.',
     specs: {
       Socket: 'AM5',
       Chipset: 'B650E',
@@ -120,10 +132,14 @@ export const products = [
     brand: 'Corsair',
     partNumber: 'CP-9020200',
     price: 149,
-    image: 'https://placehold.co/600x600/1a1a1a/ffffff?text=RM850x',
-    images: ['https://placehold.co/600x600/1a1a1a/ffffff?text=RM850x'],
-    category: 'Power',
-    description: '850W 80+ Gold fully modular power supply with zero-RPM fan mode.',
+    images: [
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=RM850x',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=RM850x+Side',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=RM850x+Cables',
+    ],
+    category: 'power',
+    description:
+      '850W 80+ Gold fully modular power supply with zero-RPM fan mode.',
     specs: {
       Wattage: '850W',
       Efficiency: '80+ Gold',
@@ -141,10 +157,15 @@ export const products = [
     brand: 'Noctua',
     partNumber: 'NH-D15',
     price: 109,
-    image: 'https://placehold.co/600x600/1a1a1a/ffffff?text=NH-D15',
-    images: ['https://placehold.co/600x600/1a1a1a/ffffff?text=NH-D15'],
-    category: 'Cooling',
-    description: 'Dual-tower air cooler with two NF-A15 140mm fans. Legendary performance.',
+    images: [
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=NH-D15',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=NH-D15+Front',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=NH-D15+Fans',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=NH-D15+Base',
+    ],
+    category: 'cooling',
+    description:
+      'Dual-tower air cooler with two NF-A15 140mm fans. Legendary performance.',
     specs: {
       Type: 'Dual-tower air',
       Fans: '2x 140mm',
@@ -162,10 +183,14 @@ export const products = [
     brand: 'NZXT',
     partNumber: 'CM-H71FW',
     price: 129,
-    image: 'https://placehold.co/600x600/1a1a1a/ffffff?text=H7+Flow',
-    images: ['https://placehold.co/600x600/1a1a1a/ffffff?text=H7+Flow'],
-    category: 'Cases',
-    description: 'Mid-tower ATX case with high-airflow perforated front panel.',
+    images: [
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=H7+Flow',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=H7+Flow+Side',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=H7+Flow+Inside',
+    ],
+    category: 'cases',
+    description:
+      'Mid-tower ATX case with high-airflow perforated front panel.',
     specs: {
       Form: 'Mid-tower ATX',
       'Motherboard Support': 'ATX, mATX, ITX',
@@ -183,10 +208,14 @@ export const products = [
     brand: 'Logitech',
     partNumber: '910-006636',
     price: 159,
-    image: 'https://placehold.co/600x600/1a1a1a/ffffff?text=G+Pro+X+2',
-    images: ['https://placehold.co/600x600/1a1a1a/ffffff?text=G+Pro+X+2'],
-    category: 'Peripherals',
-    description: '60g wireless gaming mouse with HERO 2 sensor and 95-hour battery.',
+    images: [
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=G+Pro+X+2',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=G+Pro+X+2+Top',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=G+Pro+X+2+Side',
+    ],
+    category: 'peripherals',
+    description:
+      '60g wireless gaming mouse with HERO 2 sensor and 95-hour battery.',
     specs: {
       Weight: '60g',
       Sensor: 'HERO 2',
@@ -204,10 +233,15 @@ export const products = [
     brand: 'Keychron',
     partNumber: 'Q1P-M1',
     price: 199,
-    image: 'https://placehold.co/600x600/1a1a1a/ffffff?text=Q1+Pro',
-    images: ['https://placehold.co/600x600/1a1a1a/ffffff?text=Q1+Pro'],
-    category: 'Peripherals',
-    description: '75% wireless mechanical keyboard with full aluminum body.',
+    images: [
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=Q1+Pro',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=Q1+Pro+Top',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=Q1+Pro+Side',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=Q1+Pro+Keys',
+    ],
+    category: 'peripherals',
+    description:
+      '75% wireless mechanical keyboard with full aluminum body.',
     specs: {
       Layout: '75%',
       Switch: 'Gateron Jupiter Banana',
@@ -225,10 +259,14 @@ export const products = [
     brand: 'LG',
     partNumber: '27GP850-B',
     price: 399,
-    image: 'https://placehold.co/600x600/1a1a1a/ffffff?text=27GP850',
-    images: ['https://placehold.co/600x600/1a1a1a/ffffff?text=27GP850'],
-    category: 'Monitors',
-    description: '27-inch QHD Nano IPS gaming monitor with 165Hz refresh rate.',
+    images: [
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=27GP850',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=27GP850+Front',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=27GP850+Stand',
+    ],
+    category: 'monitors',
+    description:
+      '27-inch QHD Nano IPS gaming monitor with 165Hz refresh rate.',
     specs: {
       Size: '27 inch',
       Resolution: '2560x1440',
@@ -246,10 +284,14 @@ export const products = [
     brand: 'Elgato',
     partNumber: '10GBA9901',
     price: 149,
-    image: 'https://placehold.co/600x600/1a1a1a/ffffff?text=Stream+Deck',
-    images: ['https://placehold.co/600x600/1a1a1a/ffffff?text=Stream+Deck'],
-    category: 'Accessories',
-    description: '15 customizable LCD keys for streaming, editing, and productivity.',
+    images: [
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=Stream+Deck',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=Stream+Deck+Keys',
+      'https://placehold.co/600x600/1a1a1a/ffffff?text=Stream+Deck+Stand',
+    ],
+    category: 'accessories',
+    description:
+      '15 customizable LCD keys for streaming, editing, and productivity.',
     specs: {
       Keys: '15 LCD',
       Connectivity: 'USB-C',
