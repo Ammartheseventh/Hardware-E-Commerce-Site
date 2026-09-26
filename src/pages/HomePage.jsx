@@ -1,19 +1,21 @@
 import { Link } from 'react-router-dom';
-import { getFeatured } from '../api/products';
+import { getFeatured, getLatest } from '../api/products';
 import { useAsync } from '../hooks/useAsync';
-import ProductCard from '../components/catalog/ProductCard';
+import ProductSection from '../components/catalog/ProductSection';
 
 export default function HomePage() {
-  const { data: featured, loading } = useAsync(getFeatured);
+  const { data: featured, loading: featuredLoading } = useAsync(getFeatured);
+  const { data: latest, loading: latestLoading } = useAsync(getLatest);
 
   return (
     <div>
       <section className="max-w-7xl mx-auto px-4 py-24 text-center">
         <h1 className="text-4xl md:text-6xl font-semibold tracking-tight">
-          Find the parts that matter.
+          Hardware, without the hassle.
         </h1>
         <p className="text-gray-500 mt-4 max-w-xl mx-auto">
-          Curated PC hardware, hand-picked for performance.
+          Curated components and equipment, hand-picked for performance and
+          reliability.
         </p>
         <Link
           to="/products"
@@ -23,27 +25,19 @@ export default function HomePage() {
         </Link>
       </section>
 
-      <section className="max-w-7xl mx-auto px-4 pb-24">
-        <div className="flex items-end justify-between mb-8">
-          <h2 className="text-xl font-semibold tracking-tight">Featured</h2>
-          <Link
-            to="/products"
-            className="text-sm text-gray-500 hover:text-black underline"
-          >
-            View all
-          </Link>
-        </div>
+      <ProductSection
+        title="Featured"
+        products={featured}
+        loading={featuredLoading}
+        viewAllTo="/products"
+      />
 
-        {loading ? (
-          <p className="text-sm text-gray-500">Loading…</p>
-        ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10">
-            {featured.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        )}
-      </section>
+      <ProductSection
+        title="New Arrivals"
+        products={latest}
+        loading={latestLoading}
+        viewAllTo="/products"
+      />
     </div>
   );
 }

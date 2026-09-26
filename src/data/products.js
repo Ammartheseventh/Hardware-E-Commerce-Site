@@ -5,6 +5,7 @@ export const products = [
     brand: 'NVIDIA',
     partNumber: 'RTX4070-12G',
     price: 599,
+    weight: 1.4,
     images: [
       'https://placehold.co/600x600/1a1a1a/ffffff?text=RTX+4070',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=RTX+4070+Front',
@@ -22,7 +23,6 @@ export const products = [
     },
     inStock: true,
     isFeatured: true,
-    isBestseller: true,
     createdAt: '2026-08-15',
   },
   {
@@ -31,6 +31,7 @@ export const products = [
     brand: 'AMD',
     partNumber: 'RYZEN7800X3D',
     price: 449,
+    weight: 0.1,
     images: [
       'https://placehold.co/600x600/1a1a1a/ffffff?text=7800X3D',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=7800X3D+Top',
@@ -48,7 +49,6 @@ export const products = [
     },
     inStock: true,
     isFeatured: true,
-    isBestseller: true,
     createdAt: '2026-07-20',
   },
   {
@@ -57,6 +57,7 @@ export const products = [
     brand: 'Corsair',
     partNumber: 'CMK32GX5M2B6000C30',
     price: 129,
+    weight: 0.15,
     images: [
       'https://placehold.co/600x600/1a1a1a/ffffff?text=32GB+DDR5',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=DDR5+Module',
@@ -73,7 +74,6 @@ export const products = [
     },
     inStock: true,
     isFeatured: false,
-    isBestseller: true,
     createdAt: '2026-06-10',
   },
   {
@@ -82,6 +82,7 @@ export const products = [
     brand: 'Samsung',
     partNumber: 'MZ-V9P2T0BW',
     price: 189,
+    weight: 0.05,
     images: [
       'https://placehold.co/600x600/1a1a1a/ffffff?text=990+Pro',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=990+Pro+Top',
@@ -98,7 +99,6 @@ export const products = [
     },
     inStock: true,
     isFeatured: true,
-    isBestseller: false,
     createdAt: '2026-05-02',
   },
   {
@@ -107,6 +107,7 @@ export const products = [
     brand: 'ASUS',
     partNumber: 'ROG-B650E-F',
     price: 279,
+    weight: 1.2,
     images: [
       'https://placehold.co/600x600/1a1a1a/ffffff?text=B650E-F',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=B650E-F+IO',
@@ -123,7 +124,6 @@ export const products = [
     },
     inStock: false,
     isFeatured: false,
-    isBestseller: false,
     createdAt: '2026-04-18',
   },
   {
@@ -132,6 +132,7 @@ export const products = [
     brand: 'Corsair',
     partNumber: 'CP-9020200',
     price: 149,
+    weight: 2.1,
     images: [
       'https://placehold.co/600x600/1a1a1a/ffffff?text=RM850x',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=RM850x+Side',
@@ -148,7 +149,6 @@ export const products = [
     },
     inStock: true,
     isFeatured: false,
-    isBestseller: true,
     createdAt: '2026-03-25',
   },
   {
@@ -157,6 +157,7 @@ export const products = [
     brand: 'Noctua',
     partNumber: 'NH-D15',
     price: 109,
+    weight: 1.3,
     images: [
       'https://placehold.co/600x600/1a1a1a/ffffff?text=NH-D15',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=NH-D15+Front',
@@ -174,7 +175,6 @@ export const products = [
     },
     inStock: true,
     isFeatured: true,
-    isBestseller: false,
     createdAt: '2026-02-14',
   },
   {
@@ -183,6 +183,7 @@ export const products = [
     brand: 'NZXT',
     partNumber: 'CM-H71FW',
     price: 129,
+    weight: 6.5,
     images: [
       'https://placehold.co/600x600/1a1a1a/ffffff?text=H7+Flow',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=H7+Flow+Side',
@@ -199,7 +200,6 @@ export const products = [
     },
     inStock: true,
     isFeatured: false,
-    isBestseller: false,
     createdAt: '2026-01-30',
   },
   {
@@ -208,6 +208,7 @@ export const products = [
     brand: 'Logitech',
     partNumber: '910-006636',
     price: 159,
+    weight: 0.1,
     images: [
       'https://placehold.co/600x600/1a1a1a/ffffff?text=G+Pro+X+2',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=G+Pro+X+2+Top',
@@ -224,7 +225,6 @@ export const products = [
     },
     inStock: true,
     isFeatured: false,
-    isBestseller: true,
     createdAt: '2026-08-01',
   },
   {
@@ -233,6 +233,7 @@ export const products = [
     brand: 'Keychron',
     partNumber: 'Q1P-M1',
     price: 199,
+    weight: 1.6,
     images: [
       'https://placehold.co/600x600/1a1a1a/ffffff?text=Q1+Pro',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=Q1+Pro+Top',
@@ -249,8 +250,7 @@ export const products = [
       Battery: '4000 mAh',
     },
     inStock: true,
-    isFeatured: true,
-    isBestseller: false,
+    isFeatured: false,
     createdAt: '2026-07-12',
   },
   {
@@ -259,6 +259,7 @@ export const products = [
     brand: 'LG',
     partNumber: '27GP850-B',
     price: 399,
+    weight: 5.5,
     images: [
       'https://placehold.co/600x600/1a1a1a/ffffff?text=27GP850',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=27GP850+Front',
@@ -275,7 +276,6 @@ export const products = [
     },
     inStock: true,
     isFeatured: false,
-    isBestseller: false,
     createdAt: '2026-06-22',
   },
   {
@@ -284,6 +284,7 @@ export const products = [
     brand: 'Elgato',
     partNumber: '10GBA9901',
     price: 149,
+    weight: 0.6,
     images: [
       'https://placehold.co/600x600/1a1a1a/ffffff?text=Stream+Deck',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=Stream+Deck+Keys',
@@ -300,7 +301,6 @@ export const products = [
     },
     inStock: false,
     isFeatured: false,
-    isBestseller: false,
     createdAt: '2026-05-19',
   },
 ];

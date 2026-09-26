@@ -1,14 +1,12 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCartStore } from '../store/useCartStore';
 import CartItem from '../components/cart/CartItem';
-import BookingModal from '../components/cart/BookingModal';
 
 export default function CartPage() {
+  const navigate = useNavigate();
   const items = useCartStore((state) => state.items);
   const getTotal = useCartStore((state) => state.getTotal);
   const clearCart = useCartStore((state) => state.clearCart);
-  const [isBooking, setIsBooking] = useState(false);
 
   if (items.length === 0) {
     return (
@@ -58,7 +56,7 @@ export default function CartPage() {
             </div>
             <div className="mt-2 flex justify-between text-sm">
               <span className="text-gray-600">Shipping</span>
-              <span className="font-medium">Free</span>
+              <span className="font-medium">Calculated at checkout</span>
             </div>
 
             <div className="mt-4 pt-4 border-t border-gray-200 flex justify-between">
@@ -67,10 +65,10 @@ export default function CartPage() {
             </div>
 
             <button
-              onClick={() => setIsBooking(true)}
+              onClick={() => navigate('/checkout')}
               className="mt-6 w-full py-3 bg-black text-white text-sm font-medium rounded-md hover:bg-gray-800"
             >
-              Book In-Person Payment
+              Proceed to Checkout
             </button>
 
             <Link
@@ -82,8 +80,6 @@ export default function CartPage() {
           </div>
         </div>
       </div>
-
-      <BookingModal isOpen={isBooking} onClose={() => setIsBooking(false)} />
     </div>
   );
 }

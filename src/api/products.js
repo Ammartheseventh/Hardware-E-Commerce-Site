@@ -25,12 +25,8 @@ export async function getProductById(id) {
   return products.find((p) => p.id === Number(id)) ?? null;
 }
 
-export async function getFeatured() {
-  return products.filter((p) => p.isFeatured);
-}
-
-export async function getBestsellers() {
-  return products.filter((p) => p.isBestseller);
+export async function getFeatured(limit = 4) {
+  return products.filter((p) => p.isFeatured).slice(0, limit);
 }
 
 export async function getLatest(limit = 4) {

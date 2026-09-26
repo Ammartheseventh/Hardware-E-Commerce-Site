@@ -13,7 +13,7 @@ export default function Header() {
           MYSTORE
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="flex items-center gap-8">
           <Link to="/" className="text-sm text-gray-700 hover:text-black">
             Home
           </Link>
