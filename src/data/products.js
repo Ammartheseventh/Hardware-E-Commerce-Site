@@ -275,7 +275,7 @@ export const products = [
       Panel: 'Nano IPS',
     },
     inStock: true,
-    isFeatured: false,
+    isFeatured: true,
     createdAt: '2026-06-22',
   },
   {

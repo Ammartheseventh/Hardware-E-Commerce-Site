@@ -3,13 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { useCheckoutStore } from '../../store/useCheckoutStore';
 import { useCartStore } from '../../store/useCartStore';
 import { useOrderStore } from '../../store/useOrderStore';
+import { useAuthStore } from '../../store/useAuthStore';
 import CheckoutSteps from '../../components/checkout/CheckoutSteps';
 
-const paymentMethods = [
-  { value: 'duitnow', label: 'DuitNow' },
-  { value: 'maybank2u', label: 'Maybank2u' },
-  { value: 'cimb', label: 'CIMB Bank' },
-];
+const paymentMethods = ['DuitNow', 'Maybank2u', 'CIMB Bank'];
 
 export default function ReviewPage() {
   const navigate = useNavigate();
@@ -21,6 +18,7 @@ export default function ReviewPage() {
   const getTotal = useCartStore((s) => s.getTotal);
   const clearCart = useCartStore((s) => s.clearCart);
   const addOrder = useOrderStore((s) => s.addOrder);
+  const user = useAuthStore((s) => s.user);
 
   const [paymentMethod, setPaymentMethod] = useState('');
   const [agreed, setAgreed] = useState(false);
@@ -54,6 +52,7 @@ export default function ReviewPage() {
     setSubmitting(true);
 
     const orderId = addOrder({
+      userId: user.id,
       status: 'pending_payment',
       customer: {
         name: info.name,
@@ -213,12 +212,12 @@ export default function ReviewPage() {
         </h2>
         <div className="flex flex-col gap-3">
           {paymentMethods.map((pm) => {
-            const selected = paymentMethod === pm.value;
+            const selected = paymentMethod === pm;
             return (
               <button
-                key={pm.value}
+                key={pm}
                 type="button"
-                onClick={() => setPaymentMethod(pm.value)}
+                onClick={() => setPaymentMethod(pm)}
                 className={`w-full text-left p-4 border rounded-md transition-colors ${
                   selected
                     ? 'border-black bg-gray-50'
@@ -235,9 +234,7 @@ export default function ReviewPage() {
                       <span className="w-2 h-2 rounded-full bg-black" />
                     )}
                   </span>
-                  <span className="text-sm font-medium text-gray-900">
-                    {pm.label}
-                  </span>
+                  <span className="text-sm font-medium text-gray-900">{pm}</span>
                 </div>
               </button>
             );

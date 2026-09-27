@@ -25,11 +25,11 @@ export async function getProductById(id) {
   return products.find((p) => p.id === Number(id)) ?? null;
 }
 
-export async function getFeatured(limit = 4) {
+export async function getFeatured(limit = 5) {
   return products.filter((p) => p.isFeatured).slice(0, limit);
 }
 
-export async function getLatest(limit = 4) {
+export async function getLatest(limit = 5) {
   return [...products]
     .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
     .slice(0, limit);

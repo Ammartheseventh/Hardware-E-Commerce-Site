@@ -1,6 +1,7 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import CheckoutLayout from './components/checkout/CheckoutLayout';
+import AccountLayout from './components/account/AccountLayout';
 import HomePage from './pages/HomePage';
 import ProductsPage from './pages/ProductsPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
@@ -9,6 +10,10 @@ import CheckoutInformationPage from './pages/checkout/InformationPage';
 import CheckoutDeliveryPage from './pages/checkout/DeliveryPage';
 import CheckoutReviewPage from './pages/checkout/ReviewPage';
 import CheckoutConfirmationPage from './pages/checkout/ConfirmationPage';
+import AccountOrdersPage from './pages/account/OrdersPage';
+import AccountOrderDetailsPage from './pages/account/OrderDetailsPage';
+import AccountAddressesPage from './pages/account/AddressesPage';
+import AccountSettingsPage from './pages/account/SettingsPage';
 
 function App() {
   return (
@@ -18,13 +23,24 @@ function App() {
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/products/:id" element={<ProductDetailsPage />} />
         <Route path="/cart" element={<CartPage />} />
+
+        <Route path="/account" element={<AccountLayout />}>
+          <Route index element={<Navigate to="/account/orders" replace />} />
+          <Route path="orders" element={<AccountOrdersPage />} />
+          <Route path="orders/:orderId" element={<AccountOrderDetailsPage />} />
+          <Route path="addresses" element={<AccountAddressesPage />} />
+          <Route path="settings" element={<AccountSettingsPage />} />
+        </Route>
       </Route>
 
       <Route element={<CheckoutLayout />}>
         <Route path="/checkout" element={<CheckoutInformationPage />} />
         <Route path="/checkout/delivery" element={<CheckoutDeliveryPage />} />
         <Route path="/checkout/review" element={<CheckoutReviewPage />} />
-        <Route path="/checkout/confirmation/:orderId" element={<CheckoutConfirmationPage />} />
+        <Route
+          path="/checkout/confirmation/:orderId"
+          element={<CheckoutConfirmationPage />}
+        />
       </Route>
     </Routes>
   );
