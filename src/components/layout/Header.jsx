@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { useCartStore } from '../../store/useCartStore';
 import { useAuthStore } from '../../store/useAuthStore';
 import { categories } from '../../data/categories';
+import logo from '../../assets/logo.png';
 
 export default function Header() {
   const itemCount = useCartStore((state) =>
@@ -56,8 +57,12 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-        <Link to="/" className="text-xl font-bold tracking-tight">
-          MYSTORE
+        <Link to="/" className="flex items-center shrink-0">
+          <img
+            src={logo}
+            alt="Client Name"
+            className="h-10 w-auto"
+          />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -115,7 +120,7 @@ export default function Header() {
             to="/products"
             className="text-sm text-gray-700 hover:text-black"
           >
-            Products
+            All Products
           </Link>
         </nav>
 
@@ -219,4 +224,4 @@ export default function Header() {
       </div>
     </header>
   );
-}
+          }
