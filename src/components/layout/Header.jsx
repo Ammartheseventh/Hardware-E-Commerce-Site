@@ -120,7 +120,7 @@ export default function Header() {
             to="/products"
             className="text-sm text-gray-700 hover:text-black"
           >
-            All Products
+            Products
           </Link>
         </nav>
 
