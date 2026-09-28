@@ -3,10 +3,13 @@ import { getProducts, getBrands } from '../api/products';
 import { useAsync } from '../hooks/useAsync';
 import { useFilters } from '../hooks/useFilters';
 import { categories } from '../data/categories';
+import { usePageTitle } from '../hooks/usePageTitle';
 import ProductCard from '../components/catalog/ProductCard';
 import FilterBar from '../components/catalog/FilterBar';
 
 export default function ProductsPage() {
+  usePageTitle('Products');
+
   const { category, brand, q, sort, setFilter, clearFilters, hasFilters } =
     useFilters();
 

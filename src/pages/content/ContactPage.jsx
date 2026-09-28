@@ -1,6 +1,9 @@
 import ContentPage from '../../components/layout/ContentPage';
+import { usePageTitle } from '../../hooks/usePageTitle';
 
 export default function ContactPage() {
+  usePageTitle('Contact');
+
   return (
     <ContentPage title="Contact Us">
       <p>

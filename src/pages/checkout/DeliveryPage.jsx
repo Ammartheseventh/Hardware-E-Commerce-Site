@@ -4,9 +4,12 @@ import { useCheckoutStore } from '../../store/useCheckoutStore';
 import { useCartStore } from '../../store/useCartStore';
 import { calculateShipping } from '../../api/shipping';
 import { useAsync } from '../../hooks/useAsync';
+import { usePageTitle } from '../../hooks/usePageTitle';
 import CheckoutSteps from '../../components/checkout/CheckoutSteps';
 
 export default function DeliveryPage() {
+  usePageTitle('Checkout');
+
   const navigate = useNavigate();
   const info = useCheckoutStore((s) => s.info);
   const storedDelivery = useCheckoutStore((s) => s.delivery);
@@ -15,10 +18,6 @@ export default function DeliveryPage() {
   const items = useCartStore((s) => s.items);
 
   const [delivery, setLocalDelivery] = useState(storedDelivery ?? '');
-
-  useEffect(() => {
-    document.title = 'Checkout · Delivery';
-  }, []);
 
   useEffect(() => {
     if (!info) navigate('/checkout', { replace: true });

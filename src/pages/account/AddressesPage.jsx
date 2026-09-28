@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { useAddressStore } from '../../store/useAddressStore';
+import { usePageTitle } from '../../hooks/usePageTitle';
 import AddressForm from '../../components/account/AddressForm';
 import AddressCard from '../../components/account/AddressCard';
 
 const MAX_ADDRESSES = 3;
 
 export default function AddressesPage() {
+  usePageTitle('Addresses');
+
   const addresses = useAddressStore((s) => s.addresses);
   const addAddress = useAddressStore((s) => s.addAddress);
   const updateAddress = useAddressStore((s) => s.updateAddress);

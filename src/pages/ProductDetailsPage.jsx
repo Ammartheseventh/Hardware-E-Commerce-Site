@@ -4,10 +4,13 @@ import { getProductById, getRelated } from '../api/products';
 import { useAsync } from '../hooks/useAsync';
 import { useCartStore } from '../store/useCartStore';
 import { useToastStore } from '../store/useToastStore';
+import { usePageTitle } from '../hooks/usePageTitle';
 import ImageGallery from '../components/catalog/ImageGallery';
 import ProductCard from '../components/catalog/ProductCard';
 
 export default function ProductDetailsPage() {
+  usePageTitle(product?.name);
+
   const { id } = useParams();
   const fetchProduct = useCallback(() => getProductById(id), [id]);
   const { data: product, loading } = useAsync(fetchProduct);

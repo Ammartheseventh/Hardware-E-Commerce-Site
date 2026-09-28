@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCheckoutStore } from '../../store/useCheckoutStore';
 import { useAddressStore } from '../../store/useAddressStore';
 import { provinces } from '../../data/provinces';
+import { usePageTitle } from '../../hooks/usePageTitle';
 import CheckoutSteps from '../../components/checkout/CheckoutSteps';
 import AddressPicker, { addressesMatch } from '../../components/checkout/AddressPicker';
 
@@ -32,6 +33,8 @@ function flattenInfo(info) {
 }
 
 export default function InformationPage() {
+  usePageTitle('Checkout');
+
   const navigate = useNavigate();
   const storedInfo = useCheckoutStore((s) => s.info);
   const setInfo = useCheckoutStore((s) => s.setInfo);
@@ -75,10 +78,6 @@ export default function InformationPage() {
   });
 
   const [errors, setErrors] = useState({});
-
-  useEffect(() => {
-    document.title = 'Checkout · Information';
-  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

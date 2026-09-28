@@ -3,6 +3,7 @@ import { useOrderStore } from '../../store/useOrderStore';
 import { useAuthStore } from '../../store/useAuthStore';
 import OrderDetails from '../../components/account/OrderDetails';
 import { getOrderStatus } from '../../api/orderStatus';
+import { usePageTitle } from '../../hooks/usePageTitle';
 
 function formatDate(iso) {
   return new Date(iso).toLocaleDateString('en-US', {
@@ -13,6 +14,8 @@ function formatDate(iso) {
 }
 
 export default function OrderDetailPage() {
+  usePageTitle(order?.id ?? 'Order');
+
   const { orderId } = useParams();
   const user = useAuthStore((s) => s.user);
   const order = useOrderStore((s) =>

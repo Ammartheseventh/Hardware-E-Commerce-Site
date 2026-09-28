@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { useAuthStore } from '../../store/useAuthStore';
 import { useToastStore } from '../../store/useToastStore';
+import { usePageTitle } from '../../hooks/usePageTitle';
 
 export default function SettingsPage() {
+  usePageTitle('Settings');
+  
   const user = useAuthStore((s) => s.user);
   const updateUser = useAuthStore((s) => s.updateUser);
   const showToast = useToastStore((s) => s.show);

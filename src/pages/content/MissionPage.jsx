@@ -1,6 +1,9 @@
 import ContentPage from '../../components/layout/ContentPage';
+import { usePageTitle } from '../../hooks/usePageTitle';
 
 export default function MissionPage() {
+  usePageTitle('Mission & Vision');
+
   return (
     <ContentPage title="Mission & Vision">
       <p>

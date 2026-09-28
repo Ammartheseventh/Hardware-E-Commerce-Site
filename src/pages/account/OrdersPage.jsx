@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useOrderStore } from '../../store/useOrderStore';
 import { useAuthStore } from '../../store/useAuthStore';
 import { getOrderStatus } from '../../api/orderStatus';
+import { usePageTitle } from '../../hooks/usePageTitle';
 import OrderCardStack from '../../components/account/OrderCardStack';
 
 function formatDate(iso) {
@@ -13,6 +14,8 @@ function formatDate(iso) {
 }
 
 export default function OrdersPage() {
+  usePageTitle('My Orders');
+  
   const user = useAuthStore((s) => s.user);
   const orders = useOrderStore((s) => s.orders);
   const userOrders = orders

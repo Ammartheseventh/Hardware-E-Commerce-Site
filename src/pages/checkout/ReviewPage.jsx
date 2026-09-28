@@ -4,6 +4,7 @@ import { useCheckoutStore } from '../../store/useCheckoutStore';
 import { useCartStore } from '../../store/useCartStore';
 import { useOrderStore } from '../../store/useOrderStore';
 import { useAuthStore } from '../../store/useAuthStore';
+import { usePageTitle } from '../../hooks/usePageTitle';
 import CheckoutSteps from '../../components/checkout/CheckoutSteps';
 import CouponInput from '../../components/cart/CouponInput';
 import { calculateDiscount } from '../../api/coupons';
@@ -14,6 +15,8 @@ const paymentMethods = [
 ];
 
 export default function ReviewPage() {
+  usePageTitle('Checkout');
+
   const navigate = useNavigate();
   const info = useCheckoutStore((s) => s.info);
   const delivery = useCheckoutStore((s) => s.delivery);
@@ -29,10 +32,6 @@ export default function ReviewPage() {
   const [paymentMethod, setPaymentMethod] = useState('');
   const [agreed, setAgreed] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-
-  useEffect(() => {
-    document.title = 'Checkout · Review';
-  }, []);
 
   useEffect(() => {
     if (submitting) return;

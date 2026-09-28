@@ -1,6 +1,9 @@
 import ContentPage from '../../components/layout/ContentPage';
+import { usePageTitle } from '../../hooks/usePageTitle';
 
 export default function PrivacyPage() {
+  usePageTitle('Privacy');
+
   return (
     <ContentPage
       title="Privacy Policy"

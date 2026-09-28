@@ -1,23 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useOrderStore } from '../../store/useOrderStore';
 import { useToastStore } from '../../store/useToastStore';
+import { usePageTitle } from '../../hooks/usePageTitle';
 import CheckoutSteps from '../../components/checkout/CheckoutSteps';
 import OrderDetails from '../../components/account/OrderDetails';
 
 export default function ConfirmationPage() {
+  usePageTitle(order ? 'Order Confirmed' : 'Order');
+
   const { orderId } = useParams();
   const order = useOrderStore((s) =>
     s.orders.find((o) => o.id === orderId)
   );
   const showToast = useToastStore((s) => s.show);
   const [copied, setCopied] = useState(false);
-
-  useEffect(() => {
-    document.title = orderId
-      ? `Order ${orderId} · Confirmation`
-      : 'Confirmation';
-  }, [orderId]);
 
   if (!order) {
     return (

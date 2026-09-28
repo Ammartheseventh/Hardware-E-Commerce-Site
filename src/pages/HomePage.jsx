@@ -1,10 +1,13 @@
 import { getFeatured, getLatest } from '../api/products';
 import { useAsync } from '../hooks/useAsync';
+import { usePageTitle } from '../hooks/usePageTitle';
 import ProductSection from '../components/catalog/ProductSection';
 import BrandsSection from '../components/home/BrandsSection';
 import HeroSearch from '../components/home/HeroSearch';
 
 export default function HomePage() {
+  usePageTitle();
+
   const { data: featured, loading: featuredLoading } = useAsync(getFeatured);
   const { data: latest, loading: latestLoading } = useAsync(getLatest);
 

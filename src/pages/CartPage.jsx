@@ -1,10 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useCartStore } from '../store/useCartStore';
 import { calculateDiscount } from '../api/coupons';
+import { usePageTitle } from '../hooks/usePageTitle';
 import CartItem from '../components/cart/CartItem';
 import CouponInput from '../components/cart/CouponInput';
 
 export default function CartPage() {
+  usePageTitle('Cart');
+  
   const navigate = useNavigate();
   const items = useCartStore((state) => state.items);
   const coupon = useCartStore((state) => state.coupon);

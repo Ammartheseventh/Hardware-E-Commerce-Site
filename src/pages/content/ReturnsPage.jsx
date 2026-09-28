@@ -1,6 +1,9 @@
 import ContentPage from '../../components/layout/ContentPage';
+import { usePageTitle } from '../../hooks/usePageTitle';
 
 export default function ReturnsPage() {
+  usePageTitle('Returns');
+
   return (
     <ContentPage title="Return Policy">
       <p>
