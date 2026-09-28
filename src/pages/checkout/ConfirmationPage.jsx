@@ -7,14 +7,14 @@ import CheckoutSteps from '../../components/checkout/CheckoutSteps';
 import OrderDetails from '../../components/account/OrderDetails';
 
 export default function ConfirmationPage() {
-  usePageTitle(order ? 'Order Confirmed' : 'Order');
-
   const { orderId } = useParams();
   const order = useOrderStore((s) =>
     s.orders.find((o) => o.id === orderId)
   );
   const showToast = useToastStore((s) => s.show);
   const [copied, setCopied] = useState(false);
+
+  usePageTitle(order ? 'Order Confirmed' : 'Order');
 
   if (!order) {
     return (

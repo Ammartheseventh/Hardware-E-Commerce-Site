@@ -14,13 +14,13 @@ function formatDate(iso) {
 }
 
 export default function OrderDetailPage() {
-  usePageTitle(order?.id ?? 'Order');
-
   const { orderId } = useParams();
   const user = useAuthStore((s) => s.user);
   const order = useOrderStore((s) =>
     s.orders.find((o) => o.id === orderId)
   );
+
+  usePageTitle(order?.id ?? 'Order');
 
   if (!order || order.userId !== user.id) {
     return (
