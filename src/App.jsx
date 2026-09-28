@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import CheckoutLayout from './components/checkout/CheckoutLayout';
 import AccountLayout from './components/account/AccountLayout';
+import ContentLayout from './components/content/ContentLayout';
 import HomePage from './pages/HomePage';
 import ProductsPage from './pages/ProductsPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
@@ -14,6 +15,11 @@ import AccountOrdersPage from './pages/account/OrdersPage';
 import AccountOrderDetailsPage from './pages/account/OrderDetailsPage';
 import AccountAddressesPage from './pages/account/AddressesPage';
 import AccountSettingsPage from './pages/account/SettingsPage';
+import MissionPage from './pages/content/MissionPage';
+import PrivacyPage from './pages/content/PrivacyPage';
+import TermsPage from './pages/content/TermsPage';
+import ReturnsPage from './pages/content/ReturnsPage';
+import ContactPage from './pages/content/ContactPage';
 
 function App() {
   return (
@@ -30,6 +36,15 @@ function App() {
           <Route path="orders/:orderId" element={<AccountOrderDetailsPage />} />
           <Route path="addresses" element={<AccountAddressesPage />} />
           <Route path="settings" element={<AccountSettingsPage />} />
+        </Route>
+
+        <Route path="/about" element={<ContentLayout />}>
+          <Route index element={<Navigate to="/about/mission" replace />} />
+          <Route path="mission" element={<MissionPage />} />
+          <Route path="contact" element={<ContactPage />} />
+          <Route path="returns" element={<ReturnsPage />} />
+          <Route path="privacy" element={<PrivacyPage />} />
+          <Route path="terms" element={<TermsPage />} />
         </Route>
       </Route>
 

@@ -301,7 +301,27 @@ export default function ReviewPage() {
           className="mt-0.5 w-4 h-4 accent-black"
         />
         <span className="text-sm text-gray-600">
-          I have read and agree to the Terms & Conditions and the Return Policy.
+          I have read and agree to the{' '}
+          <a
+            href="/about/terms"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="underline hover:text-red-600 transition-colors"
+          >
+            Terms & Conditions
+          </a>{' '}
+          and the{' '}
+          <a
+            href="/about/returns"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="underline hover:text-red-600 transition-colors"
+          >
+            Return Policy
+          </a>
+          .
         </span>
       </label>
 

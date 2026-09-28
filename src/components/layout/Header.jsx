@@ -122,6 +122,13 @@ export default function Header() {
           >
             Products
           </Link>
+
+          <Link
+            to="/about"
+            className="text-sm text-gray-700 hover:text-black"
+          >
+            About
+          </Link>
         </nav>
 
         <div className="flex items-center gap-4">
