@@ -9,7 +9,7 @@ import canonMultifunctionPrinter from '../assets/products/canon-multifunction-pr
 import ciscoSwitch from '../assets/products/cisco-switch.jpg';
 import corsairRam from '../assets/products/corsair-ram.jpg';
 import dellLaptop from '../assets/products/dell-laptop.jpeg';
-import dellMonitor from '../assets/products/dell-monitor.jpg';
+import dellMonitor from '../assets/products/dell-monitor.png';
 import hpLaserPrinter from '../assets/products/hp-laser-printer.jpg';
 import hpWebcam from '../assets/products/hp-webcam.jpg';
 import keychronKeyboard from '../assets/products/keychron-keyboard.jpg';

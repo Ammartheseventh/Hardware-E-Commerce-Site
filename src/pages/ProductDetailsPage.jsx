@@ -9,11 +9,11 @@ import ImageGallery from '../components/catalog/ImageGallery';
 import ProductCard from '../components/catalog/ProductCard';
 
 export default function ProductDetailsPage() {
-  usePageTitle(product?.name);
-
   const { id } = useParams();
   const fetchProduct = useCallback(() => getProductById(id), [id]);
   const { data: product, loading } = useAsync(fetchProduct);
+
+  usePageTitle(product?.name);
 
   const fetchRelated = useCallback(
     () => (product ? getRelated(product) : Promise.resolve([])),

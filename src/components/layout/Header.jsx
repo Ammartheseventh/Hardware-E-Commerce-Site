@@ -66,7 +66,7 @@ export default function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
-          <Link to="/" className="text-sm text-gray-700 hover:text-black">
+          <Link to="/" className="text-sm font-semibold text-gray-500 hover:text-black">
             Home
           </Link>
 
@@ -77,7 +77,7 @@ export default function Header() {
               onClick={() => setCategoriesOpen((v) => !v)}
               aria-expanded={categoriesOpen}
               aria-haspopup="menu"
-              className="flex items-center gap-1.5 text-sm text-gray-700 hover:text-black transition-colors"
+              className="flex items-center gap-1.5 text-sm font-semibold text-gray-500 hover:text-black transition-colors"
             >
               Categories
               <svg
@@ -86,7 +86,7 @@ export default function Header() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2"
+                strokeWidth="3"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 className={`transition-transform duration-200 ${
@@ -118,14 +118,14 @@ export default function Header() {
 
           <Link
             to="/products"
-            className="text-sm text-gray-700 hover:text-black"
+            className="text-sm font-semibold text-gray-500 hover:text-black"
           >
             Products
           </Link>
 
           <Link
             to="/about"
-            className="text-sm text-gray-700 hover:text-black"
+            className="text-sm font-semibold text-gray-500 hover:text-black"
           >
             About
           </Link>
@@ -134,13 +134,13 @@ export default function Header() {
         <div className="flex items-center gap-4">
           <Link
             to="/cart"
-            className="relative flex items-center gap-2 text-sm font-medium"
+            className="relative flex items-center gap-2 text-gray-700 hover:text-black transition-colors text-sm font-medium"
           >
             Cart
             {itemCount > 0 && (
               <span
                 key={itemCount}
-                className="absolute -top-2 -right-3 bg-[#ef4444] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-pulse-scale"
+                className="absolute -top-1.25 -right-2.75 bg-[#ef4444] text-white text-xs rounded-full w-4 h-4 flex items-center justify-center animate-pulse-scale"
               >
                 {itemCount}
               </span>
