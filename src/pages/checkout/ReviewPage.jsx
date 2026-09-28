@@ -5,8 +5,13 @@ import { useCartStore } from '../../store/useCartStore';
 import { useOrderStore } from '../../store/useOrderStore';
 import { useAuthStore } from '../../store/useAuthStore';
 import CheckoutSteps from '../../components/checkout/CheckoutSteps';
+import CouponInput from '../../components/cart/CouponInput';
+import { calculateDiscount } from '../../api/coupons';
 
-const paymentMethods = ['DuitNow', 'Maybank2u', 'CIMB Bank'];
+const paymentMethods = [
+  { value: 'duitnow', label: 'DuitNow QR' },
+  { value: 'bank_transfer', label: 'Bank transfer' },
+];
 
 export default function ReviewPage() {
   const navigate = useNavigate();
@@ -19,6 +24,7 @@ export default function ReviewPage() {
   const clearCart = useCartStore((s) => s.clearCart);
   const addOrder = useOrderStore((s) => s.addOrder);
   const user = useAuthStore((s) => s.user);
+  const coupon = useCartStore((s) => s.coupon);
 
   const [paymentMethod, setPaymentMethod] = useState('');
   const [agreed, setAgreed] = useState(false);
@@ -42,8 +48,9 @@ export default function ReviewPage() {
   if (!info || !delivery) return null;
 
   const subtotal = getTotal();
+  const discount = calculateDiscount(coupon, subtotal);
   const shippingCost = delivery === 'ship' ? shipping?.price ?? 0 : 0;
-  const total = subtotal + shippingCost;
+  const total = subtotal - discount + shippingCost;
 
   const canSubmit = paymentMethod && agreed && !submitting;
 
@@ -69,6 +76,8 @@ export default function ReviewPage() {
         images: i.images,
       })),
       subtotal,
+      discount,
+      coupon,
       shipping: shippingCost,
       total,
       paymentMethod,
@@ -212,12 +221,12 @@ export default function ReviewPage() {
         </h2>
         <div className="flex flex-col gap-3">
           {paymentMethods.map((pm) => {
-            const selected = paymentMethod === pm;
+            const selected = paymentMethod === pm.value;
             return (
               <button
-                key={pm}
+                key={pm.value}
                 type="button"
-                onClick={() => setPaymentMethod(pm)}
+                onClick={() => setPaymentMethod(pm.value)}
                 className={`w-full text-left p-4 border rounded-md transition-colors ${
                   selected
                     ? 'border-black bg-gray-50'
@@ -230,11 +239,9 @@ export default function ReviewPage() {
                       selected ? 'border-black' : 'border-gray-300'
                     }`}
                   >
-                    {selected && (
-                      <span className="w-2 h-2 rounded-full bg-black" />
-                    )}
+                    {selected && <span className="w-2 h-2 rounded-full bg-black" />}
                   </span>
-                  <span className="text-sm font-medium text-gray-900">{pm}</span>
+                  <span className="text-sm font-medium text-gray-900">{pm.label}</span>
                 </div>
               </button>
             );
@@ -255,6 +262,21 @@ export default function ReviewPage() {
             <span className="text-gray-500">Subtotal</span>
             <span className="text-gray-900">${subtotal}</span>
           </div>
+
+          <div className="mt-3">
+            <CouponInput />
+          </div>
+
+          {coupon && (
+            <div className="flex justify-between mt-3">
+              <span className="text-gray-500">
+                Discount{' '}
+                <span className="font-mono text-gray-400">{coupon.code}</span>
+              </span>
+              <span className="text-gray-900">-${discount}</span>
+            </div>
+          )}
+
           <div className="flex justify-between mt-2">
             <span className="text-gray-500">
               {delivery === 'ship' ? 'Shipping' : 'Pickup'}

@@ -86,7 +86,7 @@ export default function AccountNav() {
           aria-hidden="true"
         >
           <path
-            className="fill-none stroke-#d4d4d8 stroke-1.5 [stroke-linecap:round] [stroke-linejoin:round] [transition:stroke-dashoffset_400ms_cubic-bezier(0.23,1,0.32,1)]"
+            className="fill-none stroke-[#d4d4d8] stroke-[1.5] [stroke-linecap:round] [stroke-linejoin:round] [transition:stroke-dashoffset_400ms_cubic-bezier(0.23,1,0.32,1)]"
             d={`M ${config.trunk} 0 V ${trunkHeight}`}
             style={{
               strokeDasharray: trunkHeight,
@@ -97,7 +97,7 @@ export default function AccountNav() {
           {navItems.map((item, k) => (
             <path
               key={`branch-${item.to}`}
-              className="fill-none stroke-#d4d4d8 stroke-1.5 [stroke-linecap:round] [stroke-linejoin:round] [transition:stroke-dashoffset_400ms_cubic-bezier(0.23,1,0.32,1)]"
+              className="fill-none stroke-[#d4d4d8] stroke-[1.5] [stroke-linecap:round] [stroke-linejoin:round] [transition:stroke-dashoffset_400ms_cubic-bezier(0.23,1,0.32,1)]"
               d={branchPath(k)}
               style={{
                 strokeDasharray: traceLength(k),
@@ -113,7 +113,7 @@ export default function AccountNav() {
             return (
               <path
                 key={`trace-${item.to}`}
-                className="fill-none stroke:#18181b stroke-1.5 [stroke-linecap:round] [stroke-linejoin:round] [transition:stroke-dashoffset_400ms_cubic-bezier(0.23,1,0.32,1)]"
+                className="fill-none stroke-[#18181b] stroke-[1.5] [stroke-linecap:round] [stroke-linejoin:round] [transition:stroke-dashoffset_400ms_cubic-bezier(0.23,1,0.32,1)]"
                 d={tracePath(k)}
                 style={{
                   strokeDasharray: len,

@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCheckoutStore } from '../../store/useCheckoutStore';
+import { useAddressStore } from '../../store/useAddressStore';
 import { provinces } from '../../data/provinces';
 import CheckoutSteps from '../../components/checkout/CheckoutSteps';
+import AddressPicker, { addressesMatch } from '../../components/checkout/AddressPicker';
+
+const ADDRESS_FIELDS = new Set(['street', 'city', 'province', 'postal']);
 
 const emptyForm = {
   name: '',
@@ -12,26 +16,62 @@ const emptyForm = {
   city: '',
   province: '',
   postal: '',
-  country: 'Malaysia',
 };
+
+function flattenInfo(info) {
+  if (!info) return null;
+  return {
+    name: info.name ?? '',
+    email: info.email ?? '',
+    phone: info.phone ?? '',
+    street: info.address?.street ?? '',
+    city: info.address?.city ?? '',
+    province: info.address?.province ?? '',
+    postal: info.address?.postal ?? '',
+  };
+}
 
 export default function InformationPage() {
   const navigate = useNavigate();
   const storedInfo = useCheckoutStore((s) => s.info);
   const setInfo = useCheckoutStore((s) => s.setInfo);
+  const addresses = useAddressStore((s) => s.addresses);
 
+  // Form state: stored checkout info wins; otherwise pre-fill address
+  // from the default saved address (if any). Contact fields start empty.
   const [form, setForm] = useState(() => {
-    if (!storedInfo) return emptyForm;
-    return {
-      name: storedInfo.name ?? '',
-      email: storedInfo.email ?? '',
-      phone: storedInfo.phone ?? '',
-      street: storedInfo.address?.street ?? '',
-      city: storedInfo.address?.city ?? '',
-      province: storedInfo.address?.province ?? '',
-      postal: storedInfo.address?.postal ?? '',
-      country: storedInfo.address?.country ?? 'Malaysia',
-    };
+    const fromStored = flattenInfo(storedInfo);
+    if (fromStored) return fromStored;
+
+    const defaultAddress = addresses.find((a) => a.isDefault);
+    if (defaultAddress) {
+      return {
+        ...emptyForm,
+        street: defaultAddress.street,
+        city: defaultAddress.city,
+        province: defaultAddress.province,
+        postal: defaultAddress.postal,
+      };
+    }
+
+    return emptyForm;
+  });
+
+  // Which picker card is selected.
+  const [selectedId, setSelectedId] = useState(() => {
+    if (storedInfo) {
+      const match = addresses.find((a) =>
+        addressesMatch(a, {
+          street: storedInfo.address?.street,
+          city: storedInfo.address?.city,
+          province: storedInfo.address?.province,
+          postal: storedInfo.address?.postal,
+        })
+      );
+      return match ? match.id : 'new';
+    }
+    const defaultAddress = addresses.find((a) => a.isDefault);
+    return defaultAddress ? defaultAddress.id : 'new';
   });
 
   const [errors, setErrors] = useState({});
@@ -41,7 +81,34 @@ export default function InformationPage() {
   }, []);
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+
+    // Only deselect the picked address if an address field changed.
+    if (ADDRESS_FIELDS.has(name) && selectedId !== 'new') {
+      setSelectedId('new');
+    }
+  };
+
+  const handleSelectAddress = (address) => {
+    setSelectedId(address.id);
+    setForm((prev) => ({
+      ...prev,
+      street: address.street,
+      city: address.city,
+      province: address.province,
+      postal: address.postal,
+    }));
+  };
+
+  const handleSelectNew = () => {
+    setSelectedId('new');
+    setForm((prev) => ({
+      ...emptyForm,
+      name: prev.name,
+      email: prev.email,
+      phone: prev.phone,
+    }));
   };
 
   const validate = () => {
@@ -73,7 +140,6 @@ export default function InformationPage() {
         city: form.city.trim(),
         province: form.province,
         postal: form.postal.trim(),
-        country: form.country,
       },
     });
     navigate('/checkout/delivery');
@@ -89,6 +155,12 @@ export default function InformationPage() {
       <p className="text-sm text-gray-500 mb-8">
         We'll use this to reach you and deliver your order.
       </p>
+
+      <AddressPicker
+        selectedId={selectedId}
+        onSelect={handleSelectAddress}
+        onSelectNew={handleSelectNew}
+      />
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-6">
         <section>
@@ -168,16 +240,11 @@ export default function InformationPage() {
                 ))}
               </select>
               {errors.province && (
-                <span className="text-xs text-red-500">{errors.province}</span>
+                <span className="text-xs text-red-500">
+                  {errors.province}
+                </span>
               )}
             </div>
-            <Field
-              label="Country"
-              name="country"
-              value={form.country}
-              onChange={handleChange}
-              disabled
-            />
           </div>
         </section>
 
@@ -201,7 +268,7 @@ export default function InformationPage() {
   );
 }
 
-function Field({ label, name, type = 'text', value, onChange, error, disabled }) {
+function Field({ label, name, type = 'text', value, onChange, error }) {
   return (
     <div className="flex flex-col gap-1">
       <label className="text-sm text-gray-700">{label}</label>
@@ -210,10 +277,9 @@ function Field({ label, name, type = 'text', value, onChange, error, disabled })
         name={name}
         value={value}
         onChange={onChange}
-        disabled={disabled}
         className={`px-3 py-2 text-sm border rounded-md focus:outline-none focus:border-black ${
           error ? 'border-red-400' : 'border-gray-300'
-        } ${disabled ? 'bg-gray-50 text-gray-500' : ''}`}
+        }`}
       />
       {error && <span className="text-xs text-red-500">{error}</span>}
     </div>

@@ -1,10 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useCartStore } from '../store/useCartStore';
+import { calculateDiscount } from '../api/coupons';
 import CartItem from '../components/cart/CartItem';
+import CouponInput from '../components/cart/CouponInput';
 
 export default function CartPage() {
   const navigate = useNavigate();
   const items = useCartStore((state) => state.items);
+  const coupon = useCartStore((state) => state.coupon);
   const getTotal = useCartStore((state) => state.getTotal);
   const clearCart = useCartStore((state) => state.clearCart);
 
@@ -24,6 +27,10 @@ export default function CartPage() {
       </div>
     );
   }
+
+  const subtotal = getTotal();
+  const discount = calculateDiscount(coupon, subtotal);
+  const total = subtotal - discount;
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
@@ -52,16 +59,37 @@ export default function CartPage() {
 
             <div className="mt-4 flex justify-between text-sm">
               <span className="text-gray-600">Subtotal</span>
-              <span className="font-medium">${getTotal()}</span>
+              <span className="font-medium">${subtotal}</span>
             </div>
+
+            <div className="mt-4">
+              <CouponInput />
+            </div>
+
+            {coupon && (
+              <div className="mt-4 flex justify-between text-sm">
+                <span className="text-gray-600">
+                  Discount{' '}
+                  <span className="font-mono text-gray-400">
+                    {coupon.code}
+                  </span>
+                </span>
+                <span className="font-medium text-gray-900">
+                  -${discount}
+                </span>
+              </div>
+            )}
+
             <div className="mt-2 flex justify-between text-sm">
               <span className="text-gray-600">Shipping</span>
-              <span className="font-medium">Calculated at checkout</span>
+              <span className="font-medium text-gray-500">
+                Calculated at checkout
+              </span>
             </div>
 
             <div className="mt-4 pt-4 border-t border-gray-200 flex justify-between">
               <span className="font-semibold">Total</span>
-              <span className="font-semibold">${getTotal()}</span>
+              <span className="font-semibold">${total}</span>
             </div>
 
             <button

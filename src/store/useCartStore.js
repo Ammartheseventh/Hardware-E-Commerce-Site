@@ -5,6 +5,7 @@ export const useCartStore = create(
   persist(
     (set, get) => ({
       items: [],
+      coupon: null,
 
       addItem: (product) =>
         set((state) => {
@@ -22,9 +23,13 @@ export const useCartStore = create(
         }),
 
       removeItem: (id) =>
-        set((state) => ({
-          items: state.items.filter((i) => i.id !== id),
-        })),
+        set((state) => {
+          const next = state.items.filter((i) => i.id !== id);
+          return {
+            items: next,
+            coupon: next.length === 0 ? null : state.coupon,
+          };
+        }),
 
       updateQuantity: (id, quantity) =>
         set((state) => ({
@@ -33,7 +38,11 @@ export const useCartStore = create(
           ),
         })),
 
-      clearCart: () => set({ items: [] }),
+      clearCart: () => set({ items: [], coupon: null }),
+
+      applyCoupon: (coupon) => set({ coupon }),
+
+      removeCoupon: () => set({ coupon: null }),
 
       getTotal: () => {
         const { items } = get();

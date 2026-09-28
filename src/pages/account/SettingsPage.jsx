@@ -1,8 +1,118 @@
+import { useState } from 'react';
+import { useAuthStore } from '../../store/useAuthStore';
+import { useToastStore } from '../../store/useToastStore';
+
 export default function SettingsPage() {
+  const user = useAuthStore((s) => s.user);
+  const updateUser = useAuthStore((s) => s.updateUser);
+  const showToast = useToastStore((s) => s.show);
+
+  const [form, setForm] = useState(() => ({
+    name: user?.name ?? '',
+    email: user?.email ?? '',
+    phone: user?.phone ?? '',
+  }));
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const validate = () => {
+    const next = {};
+    if (!form.name.trim()) next.name = 'Required';
+    if (!form.email.trim()) next.email = 'Required';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
+      next.email = 'Invalid email';
+    if (!form.phone.trim()) next.phone = 'Required';
+    return next;
+  };
+
+  const isDirty =
+    form.name !== user?.name ||
+    form.email !== user?.email ||
+    form.phone !== user?.phone;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const next = validate();
+    setErrors(next);
+    if (Object.keys(next).length > 0) return;
+
+    updateUser({
+      name: form.name.trim(),
+      email: form.email.trim(),
+      phone: form.phone.trim(),
+    });
+    showToast('Settings saved');
+  };
+
   return (
     <div>
       <h1 className="text-2xl font-semibold tracking-tight mb-8">Settings</h1>
-      <p className="text-sm text-gray-500">Loading settings…</p>
+
+      <section>
+        <h2 className="text-xs uppercase tracking-wide text-gray-500 mb-4">
+          Profile
+        </h2>
+
+        <form
+          onSubmit={handleSubmit}
+          className="border border-gray-200 rounded-md p-6 flex flex-col gap-4"
+        >
+          <Field
+            label="Full name"
+            name="name"
+            value={form.name}
+            onChange={handleChange}
+            error={errors.name}
+          />
+          <Field
+            label="Email"
+            name="email"
+            type="email"
+            value={form.email}
+            onChange={handleChange}
+            error={errors.email}
+          />
+          <Field
+            label="Phone"
+            name="phone"
+            type="tel"
+            value={form.phone}
+            onChange={handleChange}
+            error={errors.phone}
+          />
+
+          <div className="flex justify-end pt-2">
+            <button
+              type="submit"
+              disabled={!isDirty}
+              className="px-5 py-2 bg-black text-white text-sm font-medium rounded-md hover:bg-gray-800 disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              Save changes
+            </button>
+          </div>
+        </form>
+      </section>
+    </div>
+  );
+}
+
+function Field({ label, name, type = 'text', value, onChange, error }) {
+  return (
+    <div className="flex flex-col gap-1">
+      <label className="text-sm text-gray-700">{label}</label>
+      <input
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
+        className={`px-3 py-2 text-sm border rounded-md focus:outline-none focus:border-black ${
+          error ? 'border-red-400' : 'border-gray-300'
+        }`}
+      />
+      {error && <span className="text-xs text-red-500">{error}</span>}
     </div>
   );
 }

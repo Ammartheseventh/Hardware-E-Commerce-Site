@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useOrderStore } from '../../store/useOrderStore';
 import { useToastStore } from '../../store/useToastStore';
+import PaymentInstructions from './PaymentInstructions';
 
 export default function OrderDetails({ order }) {
   const updateOrder = useOrderStore((s) => s.updateOrder);
@@ -48,28 +49,8 @@ export default function OrderDetails({ order }) {
 
   return (
     <>
-      {/* Payment instructions */}
-      <section className="mb-10">
-        <h2 className="text-xs uppercase tracking-wide text-gray-500 mb-3">
-          Payment instructions
-        </h2>
-        <div className="border border-gray-200 rounded-md p-4 text-sm text-gray-600 leading-relaxed">
-          <p>
-            Please transfer{' '}
-            <strong className="text-gray-900">${order.total}</strong> using{' '}
-            <strong className="text-gray-900">
-              {order.paymentMethod}
-            </strong>
-            .
-          </p>
-          <p className="mt-2">
-            Once paid, upload your receipt below. Your order will be processed
-            once the payment is verified.
-          </p>
-        </div>
-      </section>
+      <PaymentInstructions order={order} />
 
-      {/* Receipt upload */}
       <section className="mb-10">
         <h2 className="text-xs uppercase tracking-wide text-gray-500 mb-3">
           Payment receipt
@@ -121,7 +102,6 @@ export default function OrderDetails({ order }) {
         )}
       </section>
 
-      {/* Order summary */}
       <section className="mb-10">
         <h2 className="text-xs uppercase tracking-wide text-gray-500 mb-3">
           Order summary
@@ -158,6 +138,15 @@ export default function OrderDetails({ order }) {
             <span className="text-gray-500">Subtotal</span>
             <span className="text-gray-900">${order.subtotal}</span>
           </div>
+          {order.coupon && (
+            <div className="flex justify-between mt-2">
+              <span className="text-gray-500">
+                Discount{' '}
+                <span className="font-mono text-gray-400">{order.coupon.code}</span>
+              </span>
+              <span className="text-gray-900">-${order.discount}</span>
+            </div>
+          )}
           <div className="flex justify-between mt-2">
             <span className="text-gray-500">
               {order.delivery === 'ship' ? 'Shipping' : 'Pickup'}
@@ -173,7 +162,6 @@ export default function OrderDetails({ order }) {
         </div>
       </section>
 
-      {/* Delivery details */}
       <section className="mb-10">
         <h2 className="text-xs uppercase tracking-wide text-gray-500 mb-3">
           {order.delivery === 'ship' ? 'Shipping to' : 'Pickup'}

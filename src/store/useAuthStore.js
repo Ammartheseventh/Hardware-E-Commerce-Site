@@ -10,8 +10,9 @@ export const useAuthStore = create(
         email: 'john.doe@example.com',
         phone: '+60 12-345 6789',
       },
-      // Real auth will replace these later
       setUser: (user) => set({ user }),
+      updateUser: (patch) =>
+        set((state) => ({ user: { ...state.user, ...patch } })),
       clearUser: () => set({ user: null }),
     }),
     { name: 'auth-storage' }
