@@ -7,12 +7,12 @@ import ProductCard from '../components/catalog/ProductCard';
 import FilterBar from '../components/catalog/FilterBar';
 
 export default function ProductsPage() {
-  const { category, brand, q, setFilter, clearFilters, hasFilters } =
+  const { category, brand, q, sort, setFilter, clearFilters, hasFilters } =
     useFilters();
 
   const fetchProducts = useCallback(
-    () => getProducts({ category, brand, q }),
-    [category, brand, q]
+    () => getProducts({ category, brand, q, sort }),
+    [category, brand, q, sort]
   );
   const { data: filtered, loading } = useAsync(fetchProducts);
   const { data: brands } = useAsync(getBrands);
@@ -32,12 +32,8 @@ export default function ProductsPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
-      <div className="mb-6">
-        <h1 className="text-2xl font-semibold tracking-tight">All Products</h1>
-        <p className="text-sm text-gray-500 mt-1">
-          Showing {filtered.length} products
-        </p>
-      </div>
+
+      <h1 className="mb-6 text-2xl font-semibold tracking-tight">All Products</h1>
 
       <FilterBar
         categories={categories}
@@ -51,6 +47,29 @@ export default function ProductsPage() {
         onClear={clearFilters}
         hasFilters={hasFilters}
       />
+
+      <div className="flex items-center justify-between gap-4 mb-6">
+        <p className="text-sm text-gray-500">
+          Showing {filtered.length} products
+        </p>
+        <div className="flex items-center gap-2">
+          <label htmlFor="sort" className="text-sm text-gray-500">
+            Sort by
+          </label>
+          <select
+            id="sort"
+            value={sort}
+            onChange={(e) => setFilter('sort', e.target.value)}
+            className="px-3 py-1.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:border-black bg-white"
+          >
+            <option value="">Default</option>
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+            <option value="price-asc">Price: low to high</option>
+            <option value="price-desc">Price: high to low</option>
+          </select>
+        </div>
+      </div>
 
       {filtered.length === 0 ? (
         <div className="text-center py-24">

@@ -7,6 +7,7 @@ export function useFilters() {
   const category = searchParams.get('category') ?? '';
   const brand = searchParams.get('brand') ?? '';
   const q = searchParams.get('q') ?? '';
+  const sort = searchParams.get('sort') ?? '';
 
   const setFilter = useCallback(
     (key, value) => {
@@ -25,7 +26,15 @@ export function useFilters() {
     setSearchParams({}, { replace: true });
   }, [setSearchParams]);
 
-  const hasFilters = Boolean(category || brand || q);
+  const hasFilters = Boolean(category || brand || q || sort);
 
-  return { category, brand, q, setFilter, clearFilters, hasFilters };
+  return {
+    category,
+    brand,
+    q,
+    sort,
+    setFilter,
+    clearFilters,
+    hasFilters,
+  };
 }

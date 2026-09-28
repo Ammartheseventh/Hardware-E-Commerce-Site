@@ -11,7 +11,7 @@ export default function FilterBar({
   hasFilters,
 }) {
   return (
-    <div className="flex flex-col md:flex-row md:items-center gap-3 mb-8">
+    <div className="flex flex-col md:flex-row md:items-center gap-3 mb-6">
       <input
         type="text"
         value={q}

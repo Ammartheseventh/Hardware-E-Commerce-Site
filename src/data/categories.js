@@ -1,14 +1,10 @@
 export const categories = [
-  { slug: 'gpus', name: 'GPUs' },
-  { slug: 'cpus', name: 'CPUs' },
-  { slug: 'memory', name: 'Memory' },
-  { slug: 'storage', name: 'Storage' },
-  { slug: 'motherboards', name: 'Motherboards' },
-  { slug: 'power', name: 'Power' },
-  { slug: 'cooling', name: 'Cooling' },
-  { slug: 'cases', name: 'Cases' },
+  { slug: 'computers', name: 'Computers' },
+  { slug: 'components', name: 'Components' },
   { slug: 'peripherals', name: 'Peripherals' },
-  { slug: 'monitors', name: 'Monitors' },
+  { slug: 'displays', name: 'Displays' },
+  { slug: 'printing', name: 'Printing' },
+  { slug: 'networking', name: 'Networking' },
   { slug: 'accessories', name: 'Accessories' },
 ];
 

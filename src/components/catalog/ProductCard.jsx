@@ -31,7 +31,7 @@ export default function ProductCard({ product }) {
         <div className="flex items-start justify-between gap-2">
           <Link
             to={`/products/${product.id}`}
-            className="text-sm font-medium text-gray-900 hover:underline"
+            className="text-sm font-medium text-gray-900 hover:underline line-clamp-2"
           >
             {product.name}
           </Link>

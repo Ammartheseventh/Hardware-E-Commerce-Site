@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom';
 import { getFeatured, getLatest } from '../api/products';
 import { useAsync } from '../hooks/useAsync';
 import ProductSection from '../components/catalog/ProductSection';
+import BrandsSection from '../components/home/BrandsSection';
+import HeroSearch from '../components/home/HeroSearch';
 
 export default function HomePage() {
   const { data: featured, loading: featuredLoading } = useAsync(getFeatured);
@@ -17,12 +18,7 @@ export default function HomePage() {
           Curated components and equipment, hand-picked for performance and
           reliability.
         </p>
-        <Link
-          to="/products"
-          className="inline-block mt-8 px-8 py-3 bg-black text-white text-sm font-medium rounded-md hover:bg-gray-800"
-        >
-          Shop Now
-        </Link>
+        <HeroSearch />
       </section>
 
       <ProductSection
@@ -36,8 +32,10 @@ export default function HomePage() {
         title="New Arrivals"
         products={latest}
         loading={latestLoading}
-        viewAllTo="/products"
+        viewAllTo="/products?sort=newest"
       />
+
+      <BrandsSection />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { products } from '../data/products';
+import { getCategoryName } from '../data/categories';
 
 /*
  * Fetch products, optionally filtered.
@@ -7,18 +8,65 @@ import { products } from '../data/products';
  *   return request(`/api/products?${new URLSearchParams(filters)}`);
  */
 export async function getProducts(filters = {}) {
-  const { category, brand, q } = filters;
+  const { category, brand, q, sort } = filters;
   const query = (q ?? '').trim().toLowerCase();
 
-  return products.filter((p) => {
-    if (category && p.category !== category) return false;
-    if (brand && p.brand !== brand) return false;
-    if (query) {
-      const haystack = `${p.name} ${p.partNumber}`.toLowerCase();
-      if (!haystack.includes(query)) return false;
-    }
-    return true;
-  });
+  let result = products;
+
+  // Filtering
+  if (category || brand || query) {
+    result = result.filter((p) => {
+      if (category && p.category !== category) return false;
+      if (brand && p.brand !== brand) return false;
+      if (query && !matchesQuery(p, query)) return false;
+      return true;
+    });
+  }
+
+  // Sorting (only when explicitly requested)
+  if (sort) {
+    result = [...result].sort((a, b) => {
+      switch (sort) {
+        case 'newest':
+          return new Date(b.createdAt) - new Date(a.createdAt);
+        case 'oldest':
+          return new Date(a.createdAt) - new Date(b.createdAt);
+        case 'price-asc':
+          return a.price - b.price;
+        case 'price-desc':
+          return b.price - a.price;
+        default:
+          return 0;
+      }
+    });
+  }
+
+  return result;
+}
+
+// Search matching — checks name, part number, brand, category name,
+// description, and spec values. Category is checked by display name,
+// not slug, so searching "GPUs" works even though products store "gpus".
+function matchesQuery(product, query) {
+
+  const categoryName = getCategoryName(product.category).toLowerCase();
+  const specValues = Object.values(product.specs ?? {})
+    .join(' ')
+    .toLowerCase();
+
+  const haystack = [
+    product.name,
+    product.partNumber,
+    product.brand,
+    categoryName,
+    product.description,
+    specValues,
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+
+  return haystack.includes(query);
 }
 
 export async function getProductById(id) {
