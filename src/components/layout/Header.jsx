@@ -61,7 +61,7 @@ export default function Header() {
           <img
             src={logo}
             alt="Client Name"
-            className="h-10 w-auto"
+            className="h-8 w-auto"
           />
         </Link>
 
@@ -133,7 +133,7 @@ export default function Header() {
             {itemCount > 0 && (
               <span
                 key={itemCount}
-                className="absolute -top-2 -right-3 bg-black text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-pulse-scale"
+                className="absolute -top-2 -right-3 bg-[#ef4444] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-pulse-scale"
               >
                 {itemCount}
               </span>

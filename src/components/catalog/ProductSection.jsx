@@ -25,7 +25,7 @@ export default function ProductSection({
         {viewAllTo && (
           <Link
             to={viewAllTo}
-            className="text-sm text-gray-500 hover:text-black underline"
+            className="text-sm text-gray-500 hover:text-black underline decoration-2 underline-offset-4 hover:decoration-red-600"
           >
             View all
           </Link>

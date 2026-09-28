@@ -1,3 +1,29 @@
+import acerMonitor from '../assets/products/acer-monitor.jpg';
+import amdCpu from '../assets/products/amd-cpu.jpg';
+import ankerUsbDock from '../assets/products/anker-usb-dock.jpg';
+import asusDesktopPc from '../assets/products/asus-desktop-pc.webp';
+import asusLaptop from '../assets/products/asus-laptop.png';
+import asusRouter from '../assets/products/asus-router.jpg';
+import canonAllinonePrinter from '../assets/products/canon-allinone-printer.jpg';
+import canonMultifunctionPrinter from '../assets/products/canon-multifunction-printer.jpg';
+import ciscoSwitch from '../assets/products/cisco-switch.jpg';
+import corsairRam from '../assets/products/corsair-ram.jpg';
+import dellLaptop from '../assets/products/dell-laptop.jpeg';
+import dellMonitor from '../assets/products/dell-monitor.jpg';
+import hpLaserPrinter from '../assets/products/hp-laser-printer.jpg';
+import hpWebcam from '../assets/products/hp-webcam.jpg';
+import keychronKeyboard from '../assets/products/keychron-keyboard.jpg';
+import laptopStand from '../assets/products/laptop-stand.jpg';
+import lenovoLaptop from '../assets/products/lenovo-laptop.png';
+import lgMonitor from '../assets/products/lg-monitor.jpg';
+import logitechDeskMat from '../assets/products/logitech-desk-mat.png';
+import logitechHeadphones from '../assets/products/logitech-headphones.jpg';
+import logitechMouse from '../assets/products/logitech-mouse.jpg';
+import nvidiaGraphicsCard from '../assets/products/nvidia-graphics-card.png';
+import panasonicLaptop from '../assets/products/panasonic-laptop.webp';
+import samsungSsd from '../assets/products/samsung-ssd.png';
+import ubiquitiAccessPoint from '../assets/products/ubiquiti-access-point.jpg';
+
 export const products = [
   {
     id: 1,
@@ -7,7 +33,7 @@ export const products = [
     price: 189,
     weight: 0.05,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=990+Pro',
+      samsungSsd,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=990+Pro+Top',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=990+Pro+Angle',
     ],
@@ -32,7 +58,7 @@ export const products = [
     price: 179,
     weight: 7.3,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=PIXMA+TR8620',
+      canonAllinonePrinter,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=TR8620+Top',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=TR8620+Trays',
     ],
@@ -58,7 +84,7 @@ export const products = [
     price: 249,
     weight: 1.0,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=RT-AX86U',
+      asusRouter,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=RT-AX86U+Antennas',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=RT-AX86U+Ports',
     ],
@@ -84,7 +110,7 @@ export const products = [
     price: 229,
     weight: 0.4,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=Zone+Wireless+2',
+      logitechHeadphones,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=Zone+2+Side',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=Zone+2+Mic',
     ],
@@ -109,7 +135,7 @@ export const products = [
     price: 619,
     weight: 6.2,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=U2723QE',
+      dellMonitor,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=U2723QE+Front',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=U2723QE+HUB',
     ],
@@ -135,7 +161,7 @@ export const products = [
     price: 2399,
     weight: 2.1,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=Toughbook+55',
+      panasonicLaptop,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=Toughbook+55+Rugged',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=Toughbook+55+Handles',
     ],
@@ -161,7 +187,7 @@ export const products = [
     price: 249,
     weight: 0.6,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=PowerExpand+Dock',
+      ankerUsbDock,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=Dock+Ports',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=Dock+Top',
     ],
@@ -175,7 +201,7 @@ export const products = [
       Compatibility: 'Windows, macOS, ChromeOS',
     },
     inStock: true,
-    isFeatured: true,
+    isFeatured: false,
     createdAt: '2026-08-10',
   },
   {
@@ -186,7 +212,7 @@ export const products = [
     price: 599,
     weight: 1.4,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=RTX+4070',
+      nvidiaGraphicsCard,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=RTX+4070+Front',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=RTX+4070+Back',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=RTX+4070+Ports',
@@ -202,7 +228,7 @@ export const products = [
     },
     inStock: true,
     isFeatured: true,
-    createdAt: '2026-08-15',
+    createdAt: '2026-07-15',
   },
   {
     id: 9,
@@ -212,7 +238,7 @@ export const products = [
     price: 129,
     weight: 0.3,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=HP+960+Webcam',
+      hpWebcam,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=HP+960+Front',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=HP+960+Mount',
     ],
@@ -237,7 +263,7 @@ export const products = [
     price: 749,
     weight: 5.4,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=ExpertCenter+D700',
+      asusDesktopPc,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=D700+Front',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=D700+Rear',
     ],
@@ -263,7 +289,7 @@ export const products = [
     price: 399,
     weight: 5.5,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=27GP850',
+      lgMonitor,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=27GP850+Front',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=27GP850+Stand',
     ],
@@ -288,7 +314,7 @@ export const products = [
     price: 449,
     weight: 0.1,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=7800X3D',
+      amdCpu,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=7800X3D+Top',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=7800X3D+Socket',
     ],
@@ -314,7 +340,7 @@ export const products = [
     price: 289,
     weight: 8.6,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=LaserJet+M404',
+      hpLaserPrinter,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=M404+Front',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=M404+Tray',
     ],
@@ -340,7 +366,7 @@ export const products = [
     price: 59,
     weight: 1.9,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=mStand',
+      laptopStand,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=mStand+Angle',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=mStand+Base',
     ],
@@ -365,7 +391,7 @@ export const products = [
     price: 159,
     weight: 0.1,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=G+Pro+X+2',
+      logitechMouse,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=G+Pro+X+2+Top',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=G+Pro+X+2+Side',
     ],
@@ -390,7 +416,7 @@ export const products = [
     price: 449,
     weight: 7.8,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=XV340CK',
+      acerMonitor,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=XV340CK+Front',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=XV340CK+Curve',
     ],
@@ -416,7 +442,7 @@ export const products = [
     price: 299,
     weight: 1.4,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=CM14',
+      asusLaptop,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=CM14+Open',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=CM14+Screen',
     ],
@@ -431,7 +457,7 @@ export const products = [
       OS: 'Chrome OS',
     },
     inStock: true,
-    isFeatured: true,
+    isFeatured: false,
     createdAt: '2026-06-30',
   },
   {
@@ -442,7 +468,7 @@ export const products = [
     price: 349,
     weight: 12.4,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=MF445dw',
+      canonMultifunctionPrinter,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=MF445dw+Front',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=MF445dw+ADF',
     ],
@@ -468,7 +494,7 @@ export const products = [
     price: 129,
     weight: 0.15,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=32GB+DDR5',
+      corsairRam,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=DDR5+Module',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=DDR5+Heatsink',
     ],
@@ -493,7 +519,7 @@ export const products = [
     price: 899,
     weight: 3.4,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=Catalyst+1000',
+      ciscoSwitch,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=C1000+Front',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=C1000+Ports',
     ],
@@ -518,7 +544,7 @@ export const products = [
     price: 1149,
     weight: 1.8,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=Latitude+5540',
+      dellLaptop,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=Latitude+5540+Open',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=Latitude+5540+Ports',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=Latitude+5540+Side',
@@ -545,7 +571,7 @@ export const products = [
     price: 29,
     weight: 0.4,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=Desk+Mat',
+      logitechDeskMat,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=Desk+Mat+Top',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=Desk+Mat+Edge',
     ],
@@ -570,7 +596,7 @@ export const products = [
     price: 199,
     weight: 1.6,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=Q1+Pro',
+      keychronKeyboard,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=Q1+Pro+Top',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=Q1+Pro+Side',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=Q1+Pro+Keys',
@@ -596,7 +622,7 @@ export const products = [
     price: 189,
     weight: 0.5,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=UniFi+6+Pro',
+      ubiquitiAccessPoint,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=U6+Front',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=U6+Mount',
     ],
@@ -622,7 +648,7 @@ export const products = [
     price: 1849,
     weight: 1.1,
     images: [
-      'https://placehold.co/600x600/1a1a1a/ffffff?text=ThinkPad+X1',
+      lenovoLaptop,
       'https://placehold.co/600x600/1a1a1a/ffffff?text=ThinkPad+X1+Open',
       'https://placehold.co/600x600/1a1a1a/ffffff?text=ThinkPad+X1+Keyboard',
     ],
@@ -637,7 +663,7 @@ export const products = [
       Weight: '1.1kg',
     },
     inStock: true,
-    isFeatured: true,
+    isFeatured: false,
     createdAt: '2026-08-05',
   },
 ];

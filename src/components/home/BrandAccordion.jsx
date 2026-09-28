@@ -196,7 +196,7 @@ export default function BrandAccordion({
                 className="absolute inset-0 flex items-center justify-center pointer-events-none"
               >
                 <span
-                  className="text-md font-medium text-gray-900 whitespace-nowrap"
+                  className="text-lg font-bold  text-gray-900 whitespace-nowrap"
                   style={{
                     writingMode: 'vertical-rl',
                     transform: 'rotate(180deg)',
