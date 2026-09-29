@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useOrderStore } from '../../store/useOrderStore';
 import { useToastStore } from '../../store/useToastStore';
+import { formatPrice } from '../../api/formatPrice';
 import PaymentInstructions from './PaymentInstructions';
 
 export default function OrderDetails({ order }) {
@@ -152,7 +153,9 @@ export default function OrderDetails({ order }) {
               {order.delivery === 'ship' ? 'Shipping' : 'Pickup'}
             </span>
             <span className="text-gray-900">
-              {order.delivery === 'ship' ? `$${order.shipping}` : 'Free'}
+              {order.delivery === 'ship'
+                ? `${formatPrice(order.shipping)}`
+                : 'Free'}
             </span>
           </div>
           <div className="flex justify-between mt-4 pt-4 border-t border-gray-200">

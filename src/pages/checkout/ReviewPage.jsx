@@ -8,6 +8,7 @@ import { usePageTitle } from '../../hooks/usePageTitle';
 import CheckoutSteps from '../../components/checkout/CheckoutSteps';
 import CouponInput from '../../components/cart/CouponInput';
 import { calculateDiscount } from '../../api/coupons';
+import { formatPrice } from '../../api/formatPrice';
 
 const paymentMethods = [
   { value: 'duitnow', label: 'DuitNow QR' },
@@ -281,7 +282,9 @@ export default function ReviewPage() {
               {delivery === 'ship' ? 'Shipping' : 'Pickup'}
             </span>
             <span className="text-gray-900">
-              {delivery === 'ship' ? `$${shippingCost}` : 'Free'}
+              {delivery === 'ship'
+                ? `${formatPrice(shippingCost)}`
+                : 'Free'}
             </span>
           </div>
           <div className="flex justify-between mt-4 pt-4 border-t border-gray-200">

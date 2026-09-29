@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCheckoutStore } from '../../store/useCheckoutStore';
 import { useCartStore } from '../../store/useCartStore';
 import { calculateShipping } from '../../api/shipping';
+import { formatPrice } from '../../api/formatPrice';
 import { useAsync } from '../../hooks/useAsync';
 import { usePageTitle } from '../../hooks/usePageTitle';
 import CheckoutSteps from '../../components/checkout/CheckoutSteps';
@@ -72,7 +73,9 @@ export default function DeliveryPage() {
               : 'Standard delivery to the address you provided'
           }
           right={
-            delivery === 'ship' && shipping ? `$${shipping.price}` : null
+            delivery === 'ship' && shipping
+              ? `${formatPrice(shipping.price)}`
+              : null
           }
         />
 
