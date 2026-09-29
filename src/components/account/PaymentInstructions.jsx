@@ -13,7 +13,7 @@ export default function PaymentInstructions({ order }) {
         <div className="border border-gray-200 rounded-md p-4 text-sm text-gray-600">
           <p>
             Please transfer{' '}
-            <strong className="text-gray-900">${order.total}</strong> to
+            <strong className="text-gray-900">{order.total}</strong> to
             complete your order.
           </p>
           <p className="mt-2">
@@ -33,7 +33,7 @@ export default function PaymentInstructions({ order }) {
 
       <div className="border border-gray-200 rounded-md p-4 text-sm text-gray-600">
         <p>
-          Transfer <strong className="text-gray-900">${order.total}</strong>{' '}
+          Transfer <strong className="text-gray-900">{order.total}</strong>{' '}
           using <strong className="text-gray-900">{details.label}</strong>.
         </p>
 

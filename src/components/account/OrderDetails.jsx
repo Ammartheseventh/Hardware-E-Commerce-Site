@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useOrderStore } from '../../store/useOrderStore';
 import { useToastStore } from '../../store/useToastStore';
-import { formatPrice } from '../../api/formatPrice';
 import PaymentInstructions from './PaymentInstructions';
 
 export default function OrderDetails({ order }) {
@@ -127,7 +126,7 @@ export default function OrderDetails({ order }) {
                   </p>
                 </div>
                 <p className="text-sm font-semibold">
-                  ${item.price * item.quantity}
+                  RM{item.price * item.quantity}
                 </p>
               </div>
             </div>
@@ -137,7 +136,7 @@ export default function OrderDetails({ order }) {
         <div className="border border-t-0 border-gray-200 rounded-b-md p-4 text-sm">
           <div className="flex justify-between">
             <span className="text-gray-500">Subtotal</span>
-            <span className="text-gray-900">${order.subtotal}</span>
+            <span className="text-gray-900">RM{order.subtotal}</span>
           </div>
           {order.coupon && (
             <div className="flex justify-between mt-2">
@@ -145,7 +144,7 @@ export default function OrderDetails({ order }) {
                 Discount{' '}
                 <span className="font-mono text-gray-400">{order.coupon.code}</span>
               </span>
-              <span className="text-gray-900">-${order.discount}</span>
+              <span className="text-gray-900">-{order.discount}</span>
             </div>
           )}
           <div className="flex justify-between mt-2">
@@ -154,13 +153,13 @@ export default function OrderDetails({ order }) {
             </span>
             <span className="text-gray-900">
               {order.delivery === 'ship'
-                ? `${formatPrice(order.shipping)}`
+                ? `${order.shipping}`
                 : 'Free'}
             </span>
           </div>
           <div className="flex justify-between mt-4 pt-4 border-t border-gray-200">
             <span className="font-semibold text-gray-900">Total</span>
-            <span className="font-semibold text-gray-900">${order.total}</span>
+            <span className="font-semibold text-gray-900">{order.total}</span>
           </div>
         </div>
       </section>

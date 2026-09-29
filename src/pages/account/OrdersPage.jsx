@@ -67,7 +67,7 @@ export default function OrdersPage() {
                       {order.id}
                     </p>
                     <p className="text-sm font-semibold text-gray-900">
-                      ${order.total}
+                      RM{order.total}
                     </p>
                   </div>
 

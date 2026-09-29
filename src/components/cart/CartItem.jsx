@@ -19,7 +19,7 @@ export default function CartItem({ item }) {
           <div className="flex justify-between gap-4">
             <h3 className="text-sm font-medium text-gray-900">{item.name}</h3>
             <span className="text-sm font-semibold whitespace-nowrap">
-              ${item.price * item.quantity}
+              {item.price * item.quantity}
             </span>
           </div>
           <p className="text-xs text-gray-500 mt-1">

@@ -8,7 +8,6 @@ import { usePageTitle } from '../../hooks/usePageTitle';
 import CheckoutSteps from '../../components/checkout/CheckoutSteps';
 import CouponInput from '../../components/cart/CouponInput';
 import { calculateDiscount } from '../../api/coupons';
-import { formatPrice } from '../../api/formatPrice';
 
 const paymentMethods = [
   { value: 'duitnow', label: 'DuitNow QR' },
@@ -125,7 +124,7 @@ export default function ReviewPage() {
                   </p>
                 </div>
                 <p className="text-sm font-semibold">
-                  ${item.price * item.quantity}
+                  RM{item.price * item.quantity}
                 </p>
               </div>
             </div>
@@ -199,7 +198,7 @@ export default function ReviewPage() {
               <p className="text-gray-900">Ship to my address</p>
               {shipping && (
                 <p className="text-gray-500 mt-1">
-                  {shipping.weight} kg · ${shipping.price}
+                  {shipping.weight} kg · RM{shipping.price}
                 </p>
               )}
             </>
@@ -260,7 +259,7 @@ export default function ReviewPage() {
         <div className="border border-gray-200 rounded-md p-4 text-sm">
           <div className="flex justify-between">
             <span className="text-gray-500">Subtotal</span>
-            <span className="text-gray-900">${subtotal}</span>
+            <span className="text-gray-900">RM{subtotal}</span>
           </div>
 
           <div className="mt-3">
@@ -273,7 +272,7 @@ export default function ReviewPage() {
                 Discount{' '}
                 <span className="font-mono text-gray-400">{coupon.code}</span>
               </span>
-              <span className="text-gray-900">-${discount}</span>
+              <span className="text-gray-900">-RM{discount}</span>
             </div>
           )}
 
@@ -283,13 +282,13 @@ export default function ReviewPage() {
             </span>
             <span className="text-gray-900">
               {delivery === 'ship'
-                ? `${formatPrice(shippingCost)}`
+                ? `${shippingCost}`
                 : 'Free'}
             </span>
           </div>
           <div className="flex justify-between mt-4 pt-4 border-t border-gray-200">
             <span className="font-semibold text-gray-900">Total</span>
-            <span className="font-semibold text-gray-900">${total}</span>
+            <span className="font-semibold text-gray-900">RM{total}</span>
           </div>
         </div>
       </section>

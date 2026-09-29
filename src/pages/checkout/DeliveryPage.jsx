@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useCheckoutStore } from '../../store/useCheckoutStore';
 import { useCartStore } from '../../store/useCartStore';
 import { calculateShipping } from '../../api/shipping';
-import { formatPrice } from '../../api/formatPrice';
 import { useAsync } from '../../hooks/useAsync';
 import { usePageTitle } from '../../hooks/usePageTitle';
 import CheckoutSteps from '../../components/checkout/CheckoutSteps';
@@ -74,7 +73,7 @@ export default function DeliveryPage() {
           }
           right={
             delivery === 'ship' && shipping
-              ? `${formatPrice(shipping.price)}`
+              ? `$${shipping.price}`
               : null
           }
         />
@@ -99,7 +98,7 @@ export default function DeliveryPage() {
             <span className="text-gray-500">
               Shipping to {shipping.province}
             </span>
-            <span className="text-gray-900">${shipping.price}</span>
+            <span className="text-gray-900">RM{shipping.price}</span>
           </div>
         </div>
       )}

@@ -166,7 +166,7 @@ export async function getProducts(filters = {}) {
 // tomorrow
 export async function getProducts(filters = {}) {
   const params = new URLSearchParams(filters);
-  const res = await fetch(`/api/products?${params}`);
+  const res = await fetch(`/api/products?{params}`);
   return res.json();
 }
 ```

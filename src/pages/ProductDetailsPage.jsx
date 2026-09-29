@@ -79,7 +79,7 @@ export default function ProductDetailsPage() {
             Part #: {product.partNumber}
           </p>
 
-          <p className="text-2xl font-semibold mt-4">${product.price}</p>
+          <p className="text-2xl font-semibold mt-4">RM{product.price}</p>
 
           <p
             className={`text-sm mt-2 ${

@@ -62,7 +62,7 @@ export default function CartPage() {
 
             <div className="mt-4 flex justify-between text-sm">
               <span className="text-gray-600">Subtotal</span>
-              <span className="font-medium">${subtotal}</span>
+              <span className="font-medium">RM{subtotal}</span>
             </div>
 
             <div className="mt-4">
@@ -78,7 +78,7 @@ export default function CartPage() {
                   </span>
                 </span>
                 <span className="font-medium text-gray-900">
-                  -${discount}
+                  -RM{discount}
                 </span>
               </div>
             )}
@@ -92,7 +92,7 @@ export default function CartPage() {
 
             <div className="mt-4 pt-4 border-t border-gray-200 flex justify-between">
               <span className="font-semibold">Total</span>
-              <span className="font-semibold">${total}</span>
+              <span className="font-semibold">RM{total}</span>
             </div>
 
             <button

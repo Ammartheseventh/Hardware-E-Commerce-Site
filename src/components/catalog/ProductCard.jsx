@@ -36,7 +36,7 @@ export default function ProductCard({ product }) {
             {product.name}
           </Link>
           <span className="text-sm font-semibold text-gray-900 whitespace-nowrap">
-            ${product.price}
+            RM{product.price}
           </span>
         </div>
         <p className="text-xs text-gray-500">
