@@ -308,7 +308,7 @@ export default function ReviewPage() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
-            className="underline hover:text-red-600 transition-colors"
+            className="underline hover:text-brand transition-colors"
           >
             Terms & Conditions
           </a>{' '}
@@ -318,7 +318,7 @@ export default function ReviewPage() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
-            className="underline hover:text-red-600 transition-colors"
+            className="underline hover:text-brand transition-colors"
           >
             Return Policy
           </a>

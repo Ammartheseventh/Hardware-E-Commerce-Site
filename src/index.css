@@ -11,6 +11,10 @@
   100% { transform: scale(1); }
 }
 
+@theme {
+  --color-brand: #ef4444;
+}
+
 .animate-pulse-scale {
   animation: pulse-scale 0.3s ease-out;
 }

@@ -58,7 +58,7 @@ export default function HeroSearch() {
 
         <button
           type="submit"
-          className="shrink-0 px-5 py-2 bg-black text-white text-sm font-medium rounded-full hover:bg-[#ef4444] transition-colors relative overflow-hidden"
+          className="shrink-0 px-5 py-2 bg-black text-white text-sm font-medium rounded-full hover:bg-brand transition-colors relative overflow-hidden"
           style={{ minWidth: '104px' }}
         >
           {/* Crossfade between the two labels */}

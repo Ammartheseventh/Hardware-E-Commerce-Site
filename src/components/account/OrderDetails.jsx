@@ -77,7 +77,7 @@ export default function OrderDetails({ order }) {
               <button
                 type="button"
                 onClick={handleRemoveReceipt}
-                className="text-xs text-gray-500 hover:text-red-600 underline whitespace-nowrap"
+                className="text-xs text-gray-500 hover:text-brand underline whitespace-nowrap"
               >
                 Remove
               </button>

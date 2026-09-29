@@ -41,7 +41,7 @@ export default function CartPage() {
         <h1 className="text-2xl font-semibold tracking-tight">Your Cart</h1>
         <button
           onClick={clearCart}
-          className="text-xs text-gray-500 hover:text-red-600 underline"
+          className="text-xs text-gray-500 hover:text-brand underline"
         >
           Clear cart
         </button>

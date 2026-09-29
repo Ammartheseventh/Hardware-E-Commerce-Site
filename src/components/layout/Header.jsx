@@ -66,7 +66,10 @@ export default function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
-          <Link to="/" className="text-sm font-semibold text-gray-500 hover:text-black">
+          <Link
+            to="/"
+            className="text-sm font-semibold text-gray-500 hover:text-black hover:underline decoration-2 underline-offset-4 hover:decoration-brand"
+          >
             Home
           </Link>
 
@@ -77,7 +80,7 @@ export default function Header() {
               onClick={() => setCategoriesOpen((v) => !v)}
               aria-expanded={categoriesOpen}
               aria-haspopup="menu"
-              className="flex items-center gap-1.5 text-sm font-semibold text-gray-500 hover:text-black transition-colors"
+              className="group flex items-center gap-1.5 text-sm font-semibold text-gray-500 hover:text-black transition-colors"
             >
               Categories
               <svg
@@ -89,7 +92,7 @@ export default function Header() {
                 strokeWidth="3"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className={`transition-transform duration-200 ${
+                className={`transition-all duration-200 group-hover:scale-125 group-hover:text-brand ${
                   categoriesOpen ? 'rotate-180' : ''
                 }`}
               >
@@ -105,7 +108,7 @@ export default function Header() {
                       <NavLink
                         to={`/products?category=${c.slug}`}
                         onClick={() => setCategoriesOpen(false)}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-black transition-colors"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-brand transition-colors"
                       >
                         {c.name}
                       </NavLink>
@@ -118,14 +121,14 @@ export default function Header() {
 
           <Link
             to="/products"
-            className="text-sm font-semibold text-gray-500 hover:text-black"
+            className="text-sm font-semibold text-gray-500 hover:text-black hover:underline decoration-2 underline-offset-4 hover:decoration-brand"
           >
             Products
           </Link>
 
           <Link
             to="/about"
-            className="text-sm font-semibold text-gray-500 hover:text-black"
+            className="text-sm font-semibold text-gray-500 hover:text-black hover:underline decoration-2 underline-offset-4 hover:decoration-brand"
           >
             About
           </Link>
@@ -134,15 +137,17 @@ export default function Header() {
         <div className="flex items-center gap-4">
           <Link
             to="/cart"
-            className="relative flex items-center gap-2 text-gray-700 hover:text-black transition-colors text-sm font-medium"
+            className="group relative flex items-center gap-2 text-gray-700 hover:text-black transition-colors text-sm font-medium"
           >
             Cart
             {itemCount > 0 && (
-              <span
-                key={itemCount}
-                className="absolute -top-1.25 -right-2.75 bg-[#ef4444] text-white text-xs rounded-full w-4 h-4 flex items-center justify-center animate-pulse-scale"
-              >
-                {itemCount}
+              <span className="absolute -top-1.25 -right-2.75 transition-transform duration-200 group-hover:scale-125">
+                <span
+                  key={itemCount}
+                  className="bg-brand text-white text-xs rounded-full w-4 h-4 flex items-center justify-center animate-pulse-scale"
+                >
+                  {itemCount}
+                </span>
               </span>
             )}
           </Link>
@@ -154,7 +159,7 @@ export default function Header() {
               onClick={() => setUserMenuOpen((v) => !v)}
               aria-label="Account menu"
               aria-expanded={userMenuOpen}
-              className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-black transition-colors"
+              className="group flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-black transition-colors"
             >
               <span className="hidden sm:inline">
                 {user?.name?.split(' ')[0] ?? 'Account'}
@@ -168,7 +173,7 @@ export default function Header() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className={`transition-transform duration-200 ${
+                className={`transition-transform duration-200 group-hover:scale-125 group-hover:text-brand ${
                   userMenuOpen ? 'rotate-180' : ''
                 }`}
               >
@@ -192,7 +197,7 @@ export default function Header() {
                     <Link
                       to="/account/orders"
                       onClick={() => setUserMenuOpen(false)}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-brand transition-colors"
                     >
                       My Orders
                     </Link>
@@ -201,7 +206,7 @@ export default function Header() {
                     <Link
                       to="/account/addresses"
                       onClick={() => setUserMenuOpen(false)}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-brand transition-colors"
                     >
                       Addresses
                     </Link>
@@ -210,7 +215,7 @@ export default function Header() {
                     <Link
                       to="/account/settings"
                       onClick={() => setUserMenuOpen(false)}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-brand transition-colors"
                     >
                       Settings
                     </Link>
@@ -220,7 +225,7 @@ export default function Header() {
                 <button
                   type="button"
                   onClick={() => setUserMenuOpen(false)}
-                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors border-t border-gray-100"
+                  className="block w-full text-left px-4 py-2 text-sm font-semibold text-brand hover:bg-gray-50 transition-colors border-t border-gray-100"
                 >
                   Log Out
                 </button>

@@ -55,7 +55,7 @@ export default function AddressCard({ address, onEdit, onDelete, onMakeDefault }
             <button
               type="button"
               onClick={() => onDelete(address.id)}
-              className="text-red-600 hover:text-red-700 underline"
+              className="text-brand hover:text-red-700 underline"
             >
               Yes
             </button>
@@ -71,7 +71,7 @@ export default function AddressCard({ address, onEdit, onDelete, onMakeDefault }
           <button
             type="button"
             onClick={() => setConfirmingDelete(true)}
-            className="text-gray-500 hover:text-red-600 underline"
+            className="text-gray-500 hover:text-brand underline"
           >
             Delete
           </button>

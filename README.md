@@ -296,7 +296,7 @@ Nested routes (`/account/*`, `/about/*`) share a layout component that provides 
 ### Palette
 
 - **Base**: white, `gray-50` through `gray-900`
-- **Accent**: `red-600` — tied to the client logo's red
+- **Accent**: `#EF4444` — tied to the client logo's red
 - **Accent usage**: cart badge, hover underlines on "View all" links, link hovers in prose
 - **Restraint**: red is used sparingly, never for large fills or backgrounds
 
