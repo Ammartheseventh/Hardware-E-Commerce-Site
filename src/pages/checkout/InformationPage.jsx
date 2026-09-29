@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCheckoutStore } from '../../store/useCheckoutStore';
 import { useAddressStore } from '../../store/useAddressStore';
-import { provinces } from '../../data/provinces';
+import { states } from '../../data/shippingStates';
 import { usePageTitle } from '../../hooks/usePageTitle';
 import CheckoutSteps from '../../components/checkout/CheckoutSteps';
 import AddressPicker, { addressesMatch } from '../../components/checkout/AddressPicker';
 
-const ADDRESS_FIELDS = new Set(['street', 'city', 'province', 'postal']);
+const ADDRESS_FIELDS = new Set(['street', 'city', 'state', 'postal']);
 
 const emptyForm = {
   name: '',
@@ -15,7 +15,7 @@ const emptyForm = {
   phone: '',
   street: '',
   city: '',
-  province: '',
+  state: '',
   postal: '',
 };
 
@@ -27,7 +27,7 @@ function flattenInfo(info) {
     phone: info.phone ?? '',
     street: info.address?.street ?? '',
     city: info.address?.city ?? '',
-    province: info.address?.province ?? '',
+    state: info.address?.state ?? '',
     postal: info.address?.postal ?? '',
   };
 }
@@ -52,7 +52,7 @@ export default function InformationPage() {
         ...emptyForm,
         street: defaultAddress.street,
         city: defaultAddress.city,
-        province: defaultAddress.province,
+        state: defaultAddress.state,
         postal: defaultAddress.postal,
       };
     }
@@ -67,7 +67,7 @@ export default function InformationPage() {
         addressesMatch(a, {
           street: storedInfo.address?.street,
           city: storedInfo.address?.city,
-          province: storedInfo.address?.province,
+          state: storedInfo.address?.state,
           postal: storedInfo.address?.postal,
         })
       );
@@ -95,7 +95,7 @@ export default function InformationPage() {
       ...prev,
       street: address.street,
       city: address.city,
-      province: address.province,
+      state: address.state,
       postal: address.postal,
     }));
   };
@@ -119,7 +119,7 @@ export default function InformationPage() {
     if (!form.phone.trim()) next.phone = 'Required';
     if (!form.street.trim()) next.street = 'Required';
     if (!form.city.trim()) next.city = 'Required';
-    if (!form.province) next.province = 'Required';
+    if (!form.state) next.state = 'Required';
     if (!form.postal.trim()) next.postal = 'Required';
     return next;
   };
@@ -137,7 +137,7 @@ export default function InformationPage() {
       address: {
         street: form.street.trim(),
         city: form.city.trim(),
-        province: form.province,
+        state: form.state,
         postal: form.postal.trim(),
       },
     });
@@ -222,25 +222,25 @@ export default function InformationPage() {
               />
             </div>
             <div className="flex flex-col gap-1">
-              <label className="text-sm text-gray-700">Province</label>
+              <label className="text-sm text-gray-700">State</label>
               <select
-                name="province"
-                value={form.province}
+                name="state"
+                value={form.state}
                 onChange={handleChange}
                 className={`px-3 py-2 text-sm border rounded-md focus:outline-none focus:border-black bg-white ${
-                  errors.province ? 'border-red-400' : 'border-gray-300'
+                  errors.state ? 'border-red-400' : 'border-gray-300'
                 }`}
               >
-                <option value="">Select a province</option>
-                {provinces.map((p) => (
+                <option value="">Select a state</option>
+                {states.map((p) => (
                   <option key={p} value={p}>
                     {p}
                   </option>
                 ))}
               </select>
-              {errors.province && (
+              {errors.state && (
                 <span className="text-xs text-red-500">
-                  {errors.province}
+                  {errors.state}
                 </span>
               )}
             </div>
@@ -257,7 +257,7 @@ export default function InformationPage() {
           </button>
           <button
             type="submit"
-            className="px-6 py-3 bg-black text-white text-sm font-medium rounded-md hover:bg-gray-800"
+            className="px-6 py-3 bg-brand text-white text-sm font-medium rounded-md hover:bg-brand-dark"
           >
             Continue to Delivery
           </button>

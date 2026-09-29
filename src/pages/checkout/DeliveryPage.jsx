@@ -32,7 +32,7 @@ export default function DeliveryPage() {
     if (delivery !== 'ship') return Promise.resolve(null);
     return calculateShipping({
       items,
-      province: info?.address?.province ?? '',
+      state: info?.address?.state ?? '',
     });
   }, [delivery, items, info]);
 
@@ -68,7 +68,7 @@ export default function DeliveryPage() {
             delivery === 'ship' && loadingShipping
               ? 'Calculating shipping…'
               : delivery === 'ship' && shipping
-              ? `${shipping.weight} kg · Shipping to ${shipping.province}`
+              ? `${shipping.weight} kg · Shipping to ${shipping.state}`
               : 'Standard delivery to the address you provided'
           }
           right={
@@ -96,7 +96,7 @@ export default function DeliveryPage() {
           </div>
           <div className="flex justify-between mt-1">
             <span className="text-gray-500">
-              Shipping to {shipping.province}
+              Shipping to {shipping.state}
             </span>
             <span className="text-gray-900">RM{shipping.price}</span>
           </div>
@@ -122,7 +122,7 @@ export default function DeliveryPage() {
           type="button"
           onClick={handleContinue}
           disabled={!delivery || loadingShipping}
-          className="px-6 py-3 bg-black text-white text-sm font-medium rounded-md hover:bg-gray-800 disabled:opacity-40 disabled:cursor-not-allowed"
+          className="px-6 py-3 bg-brand text-white text-sm font-medium rounded-md hover:bg-brand-dark disabled:opacity-40 disabled:cursor-not-allowed"
         >
           Continue to Review
         </button>

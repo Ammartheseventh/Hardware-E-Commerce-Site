@@ -173,7 +173,7 @@ export default function ReviewPage() {
             <p>
               {info.address.city}, {info.address.postal}
             </p>
-            <p>{info.address.province}</p>
+            <p>{info.address.state}</p>
           </div>
         </section>
       )}
@@ -338,7 +338,7 @@ export default function ReviewPage() {
           type="button"
           onClick={handlePlaceOrder}
           disabled={!canSubmit}
-          className="px-6 py-3 bg-black text-white text-sm font-medium rounded-md hover:bg-gray-800 disabled:opacity-40 disabled:cursor-not-allowed"
+          className="px-6 py-3 bg-brand text-white text-sm font-medium rounded-md hover:bg-brand-dark disabled:opacity-40 disabled:cursor-not-allowed"
         >
           {submitting ? 'Placing order…' : 'Place Order'}
         </button>

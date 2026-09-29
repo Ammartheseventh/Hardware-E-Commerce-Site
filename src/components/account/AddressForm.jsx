@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { provinces } from '../../data/provinces';
+import { states } from '../../data/shippingStates';
 
 const emptyForm = {
   label: '',
@@ -7,7 +7,7 @@ const emptyForm = {
   phone: '',
   street: '',
   city: '',
-  province: '',
+  state: '',
   postal: '',
 };
 
@@ -20,7 +20,7 @@ export default function AddressForm({ initial, onSubmit, onCancel }) {
       phone: initial.phone ?? '',
       street: initial.street ?? '',
       city: initial.city ?? '',
-      province: initial.province ?? '',
+      state: initial.state ?? '',
       postal: initial.postal ?? '',
     };
   });
@@ -36,7 +36,7 @@ export default function AddressForm({ initial, onSubmit, onCancel }) {
     if (!form.phone.trim()) next.phone = 'Required';
     if (!form.street.trim()) next.street = 'Required';
     if (!form.city.trim()) next.city = 'Required';
-    if (!form.province) next.province = 'Required';
+    if (!form.state) next.state = 'Required';
     if (!form.postal.trim()) next.postal = 'Required';
     return next;
   };
@@ -53,7 +53,7 @@ export default function AddressForm({ initial, onSubmit, onCancel }) {
       phone: form.phone.trim(),
       street: form.street.trim(),
       city: form.city.trim(),
-      province: form.province,
+      state: form.state,
       postal: form.postal.trim(),
     });
   };
@@ -109,24 +109,24 @@ export default function AddressForm({ initial, onSubmit, onCancel }) {
         />
       </div>
       <div className="flex flex-col gap-1">
-        <label className="text-sm text-gray-700">Province</label>
+        <label className="text-sm text-gray-700">State</label>
         <select
-          name="province"
-          value={form.province}
+          name="state"
+          value={form.state}
           onChange={handleChange}
           className={`px-3 py-2 text-sm border rounded-md focus:outline-none focus:border-black bg-white ${
-            errors.province ? 'border-red-400' : 'border-gray-300'
+            errors.state ? 'border-red-400' : 'border-gray-300'
           }`}
         >
-          <option value="">Select a province</option>
-          {provinces.map((p) => (
+          <option value="">Select a state</option>
+          {states.map((p) => (
             <option key={p} value={p}>
               {p}
             </option>
           ))}
         </select>
-        {errors.province && (
-          <span className="text-xs text-red-500">{errors.province}</span>
+        {errors.state && (
+          <span className="text-xs text-red-500">{errors.state}</span>
         )}
       </div>
 

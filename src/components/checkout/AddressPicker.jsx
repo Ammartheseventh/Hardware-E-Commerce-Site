@@ -5,7 +5,7 @@ export function addressesMatch(a, b) {
   return (
     a.street === b.street &&
     a.city === b.city &&
-    a.province === b.province &&
+    a.state === b.state &&
     a.postal === b.postal
   );
 }
@@ -73,7 +73,7 @@ export default function AddressPicker({ selectedId, onSelect, onSelectNew }) {
                     {address.city}, {address.postal}
                   </p>
                   <p className="text-xs text-gray-500">
-                    {address.province}
+                    {address.state}
                   </p>
                 </div>
               </div>

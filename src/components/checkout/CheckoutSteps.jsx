@@ -18,7 +18,7 @@ export default function CheckoutSteps({ current }) {
             <span
               className={
                 isCurrent
-                  ? 'font-semibold text-black'
+                  ? 'font-semibold text-brand'
                   : isComplete
                   ? 'text-gray-900'
                   : 'text-gray-400'

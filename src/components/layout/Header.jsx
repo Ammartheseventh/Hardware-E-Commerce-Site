@@ -60,7 +60,7 @@ export default function Header() {
         <Link to="/" className="flex items-center shrink-0">
           <img
             src={logo}
-            alt="Client Name"
+            alt="CBGinfotech"
             className="h-8 w-auto"
           />
         </Link>

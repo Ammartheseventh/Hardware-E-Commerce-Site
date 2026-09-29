@@ -97,7 +97,7 @@ export default function CartPage() {
 
             <button
               onClick={() => navigate('/checkout')}
-              className="mt-6 w-full py-3 bg-black text-white text-sm font-medium rounded-md hover:bg-gray-800"
+              className="mt-6 w-full py-3 bg-brand text-white text-sm font-medium rounded-md hover:bg-brand-dark"
             >
               Proceed to Checkout
             </button>

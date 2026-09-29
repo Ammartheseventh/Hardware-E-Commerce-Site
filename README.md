@@ -36,7 +36,7 @@ Built with React + Vite + Tailwind, with a Zustand-based state layer and a mock 
 - Persistent cart (survives refresh via localStorage)
 - Multi-step checkout: Information → Delivery → Review & Payment → Confirmation
 - Saved address picker with default-address pre-selection
-- Province-based shipping calculation
+- Shipping calculation based on the state from the address
 - Two payment methods: DuitNow QR and Bank transfer, each with method-specific instructions
 - Receipt upload for manual payment verification
 - Coupon code support (percentage and fixed-amount)
@@ -128,7 +128,7 @@ src/
 │   ├── categories.js     # 7 broad categories
 │   ├── brands.js         # 8 homepage brand logos
 │   ├── coupons.js        # coupon definitions
-│   ├── provinces.js      # Malaysian provinces
+│   ├── states.js      # Malaysian states
 │   └── paymentDetails.js # DuitNow QR + bank transfer config
 ├── hooks/
 │   ├── useAsync.js       # async data fetching
@@ -236,7 +236,7 @@ Every function in `src/api/` is async and returns the same shape whether the dat
 |---|---|
 | `api/products.js` | `getProducts(filters)`, `getProductById(id)`, `getFeatured()`, `getLatest()`, `getBrands()` |
 | `api/coupons.js` | `validateCoupon(code)`, `calculateDiscount(coupon, subtotal)` |
-| `api/shipping.js` | `calculateShipping(province, weight)` |
+| `api/shipping.js` | `calculateShipping(state, weight)` |
 | `api/orderStatus.js` | `getOrderStatus(slug)` |
 
 ### Order statuses

@@ -19,7 +19,7 @@ export default function AddressCard({ address, onEdit, onDelete, onMakeDefault }
           <p className="text-sm text-gray-500">
             {address.city}, {address.postal}
           </p>
-          <p className="text-sm text-gray-500">{address.province}</p>
+          <p className="text-sm text-gray-500">{address.state}</p>
           <p className="text-sm text-gray-500 mt-2">{address.phone}</p>
         </div>
 
