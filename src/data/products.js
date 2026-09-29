@@ -30,7 +30,7 @@ export const products = [
     name: 'Samsung 990 Pro 2TB NVMe SSD',
     brand: 'Samsung',
     partNumber: 'MZ-V9P2T0BW',
-    price: 189,
+    price: 899,
     weight: 0.05,
     images: [
       samsungSsd,
@@ -55,7 +55,7 @@ export const products = [
     name: 'Canon PIXMA TR8620 All-in-One Printer',
     brand: 'Canon',
     partNumber: 'TR8620',
-    price: 179,
+    price: 749,
     weight: 7.3,
     images: [
       canonAllinonePrinter,
@@ -81,7 +81,7 @@ export const products = [
     name: 'Asus RT-AX86U Pro Wi-Fi 6 Router',
     brand: 'Asus',
     partNumber: 'RT-AX86U-PRO',
-    price: 249,
+    price: 1199,
     weight: 1.0,
     images: [
       asusRouter,
@@ -107,7 +107,7 @@ export const products = [
     name: 'Logitech Zone Wireless 2 Headset',
     brand: 'Logitech',
     partNumber: '981-001270',
-    price: 229,
+    price: 949,
     weight: 0.4,
     images: [
       logitechHeadphones,
@@ -132,7 +132,7 @@ export const products = [
     name: 'Dell UltraSharp U2723QE 27" 4K Monitor',
     brand: 'Dell',
     partNumber: 'U2723QE',
-    price: 619,
+    price: 2899,
     weight: 6.2,
     images: [
       dellMonitor,
@@ -158,7 +158,7 @@ export const products = [
     name: 'Panasonic Toughbook 55 Rugged Laptop',
     brand: 'Panasonic',
     partNumber: 'TB55-MK3-I5',
-    price: 2399,
+    price: 9999,
     weight: 2.1,
     images: [
       panasonicLaptop,
@@ -184,7 +184,7 @@ export const products = [
     name: 'Anker PowerExpand 13-in-1 USB-C Dock',
     brand: 'Anker',
     partNumber: 'A8394',
-    price: 249,
+    price: 999,
     weight: 0.6,
     images: [
       ankerUsbDock,
@@ -209,7 +209,7 @@ export const products = [
     name: 'NVIDIA RTX 4070 Graphics Card',
     brand: 'NVIDIA',
     partNumber: 'RTX4070-12G',
-    price: 599,
+    price: 2999,
     weight: 1.4,
     images: [
       nvidiaGraphicsCard,
@@ -235,7 +235,7 @@ export const products = [
     name: 'HP 960 4K Streaming Webcam',
     brand: 'HP',
     partNumber: 'HP960-4K-CAM',
-    price: 129,
+    price: 549,
     weight: 0.3,
     images: [
       hpWebcam,
@@ -260,7 +260,7 @@ export const products = [
     name: 'Asus ExpertCenter D700 Desktop PC',
     brand: 'Asus',
     partNumber: 'D700SA-I5-16-512',
-    price: 749,
+    price: 3499,
     weight: 5.4,
     images: [
       asusDesktopPc,
@@ -286,7 +286,7 @@ export const products = [
     name: 'LG 27GP850-B 27" QHD Gaming Monitor',
     brand: 'LG',
     partNumber: '27GP850-B',
-    price: 399,
+    price: 1699,
     weight: 5.5,
     images: [
       lgMonitor,
@@ -311,7 +311,7 @@ export const products = [
     name: 'AMD Ryzen 7 7800X3D Processor',
     brand: 'AMD',
     partNumber: 'RYZEN7800X3D',
-    price: 449,
+    price: 1999,
     weight: 0.1,
     images: [
       amdCpu,
@@ -337,7 +337,7 @@ export const products = [
     name: 'HP LaserJet Pro M404dn',
     brand: 'HP',
     partNumber: 'W1A53A',
-    price: 289,
+    price: 1299,
     weight: 8.6,
     images: [
       hpLaserPrinter,
@@ -363,7 +363,7 @@ export const products = [
     name: 'Rain Design mStand Laptop Stand',
     brand: 'Rain Design',
     partNumber: 'MSTAND-SL',
-    price: 59,
+    price: 299,
     weight: 1.9,
     images: [
       laptopStand,
@@ -388,7 +388,7 @@ export const products = [
     name: 'Logitech G Pro X Superlight 2',
     brand: 'Logitech',
     partNumber: '910-006636',
-    price: 159,
+    price: 649.99,
     weight: 0.1,
     images: [
       logitechMouse,
@@ -413,7 +413,7 @@ export const products = [
     name: 'Acer Nitro XV340CK 34" Ultrawide',
     brand: 'Acer',
     partNumber: 'XV340CK-P',
-    price: 449,
+    price: 1899,
     weight: 7.8,
     images: [
       acerMonitor,
@@ -439,7 +439,7 @@ export const products = [
     name: 'Asus Chromebook CM14 Education Edition',
     brand: 'Asus',
     partNumber: 'CM1400-CEL-4-64',
-    price: 299,
+    price: 1299,
     weight: 1.4,
     images: [
       asusLaptop,
@@ -465,7 +465,7 @@ export const products = [
     name: 'Canon imageCLASS MF445dw Multifunction',
     brand: 'Canon',
     partNumber: 'MF445DW',
-    price: 349,
+    price: 1499,
     weight: 12.4,
     images: [
       canonMultifunctionPrinter,
@@ -491,7 +491,7 @@ export const products = [
     name: 'Corsair Vengeance 32GB DDR5 Kit',
     brand: 'Corsair',
     partNumber: 'CMK32GX5M2B6000C30',
-    price: 129,
+    price: 599,
     weight: 0.15,
     images: [
       corsairRam,
@@ -516,7 +516,7 @@ export const products = [
     name: 'Cisco Catalyst 1000 24-Port Switch',
     brand: 'Cisco',
     partNumber: 'C1000-24T-4G-L',
-    price: 899,
+    price: 4999,
     weight: 3.4,
     images: [
       ciscoSwitch,
@@ -541,7 +541,7 @@ export const products = [
     name: 'Dell Latitude 5540 Business Laptop',
     brand: 'Dell',
     partNumber: 'LAT5540-I7-16-512',
-    price: 1149,
+    price: 4499,
     weight: 1.8,
     images: [
       dellLaptop,
@@ -568,7 +568,7 @@ export const products = [
     name: 'Logitech Desk Mat Studio Series',
     brand: 'Logitech',
     partNumber: '956-000045',
-    price: 29,
+    price: 129.99,
     weight: 0.4,
     images: [
       logitechDeskMat,
@@ -593,7 +593,7 @@ export const products = [
     name: 'Keychron Q1 Pro Mechanical Keyboard',
     brand: 'Keychron',
     partNumber: 'Q1P-M1',
-    price: 199,
+    price: 899.99,
     weight: 1.6,
     images: [
       keychronKeyboard,
@@ -619,7 +619,7 @@ export const products = [
     name: 'Ubiquiti UniFi 6 Pro Access Point',
     brand: 'Ubiquiti',
     partNumber: 'U6-PRO',
-    price: 189,
+    price: 849,
     weight: 0.5,
     images: [
       ubiquitiAccessPoint,
@@ -645,7 +645,7 @@ export const products = [
     name: 'Lenovo ThinkPad X1 Carbon Gen 12',
     brand: 'Lenovo',
     partNumber: 'X1C-G12-I7-32-1T',
-    price: 1849,
+    price: 7499,
     weight: 1.1,
     images: [
       lenovoLaptop,
