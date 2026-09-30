@@ -1,6 +1,6 @@
 import { Link, Outlet } from 'react-router-dom';
 import Toast from '../common/Toast';
-import logo from '../../assets/logo.png';
+import largeLogo from '../../assets/largeLogo.png';
 
 export default function CheckoutLayout() {
   return (
@@ -8,7 +8,7 @@ export default function CheckoutLayout() {
       <header className="border-b border-gray-200">
         <div className="max-w-3xl mx-auto px-4 h-16 flex items-center justify-center">
           <Link to="/" className="flex items-center shrink-0">
-            <img src={logo} alt="CBGinfotech" className="h-8 w-auto" />
+            <img src={largeLogo} alt="CBGinfotech" className="h-8 w-auto" />
           </Link>
         </div>
       </header>

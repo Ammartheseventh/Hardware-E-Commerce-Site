@@ -39,7 +39,7 @@ export default function ProductCard({ product }) {
             RM{product.price}
           </span>
         </div>
-        <p className="text-xs text-gray-500">
+        <p className="text-xs text-brand">
           {getCategoryName(product.category)}
         </p>
       </div>

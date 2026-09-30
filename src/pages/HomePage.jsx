@@ -21,7 +21,6 @@ export default function HomePage() {
           Curated components and equipment, hand-picked for performance and
           reliability.
         </p>
-        <HeroSearch />
       </section>
 
       <ProductSection

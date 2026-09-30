@@ -3,7 +3,48 @@ import { Link, NavLink } from 'react-router-dom';
 import { useCartStore } from '../../store/useCartStore';
 import { useAuthStore } from '../../store/useAuthStore';
 import { categories } from '../../data/categories';
-import logo from '../../assets/logo.png';
+import NavMenu from './NavMenu';
+import largeLogo from '../../assets/largeLogo.png';
+import mediumLogo from '../../assets/mediumLogo.png';
+import smallLogo from '../../assets/smallLogo.png';
+import Search from './Search';
+
+function CartIcon() {
+  return (
+    <svg
+      className="w-5 h-5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.75}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <path d="M16 10a4 4 0 0 1-8 0" />
+    </svg>
+  );
+}
+
+function AccountIcon() {
+  return (
+    <svg
+      className="w-5 h-5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.75}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+    </svg>
+  );
+}
 
 export default function Header() {
   const itemCount = useCartStore((state) =>
@@ -57,89 +98,120 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center shrink-0">
-          <img
-            src={logo}
-            alt="CBGinfotech"
-            className="h-8 w-auto"
-          />
-        </Link>
-
-        <nav className="hidden md:flex items-center gap-8">
-          <Link
-            to="/"
-            className="text-sm font-semibold text-gray-500 hover:text-black hover:underline decoration-2 underline-offset-4 hover:decoration-brand"
-          >
-            Home
-          </Link>
-
-          {/* Categories dropdown */}
-          <div className="relative" ref={categoriesRef}>
-            <button
-              type="button"
-              onClick={() => setCategoriesOpen((v) => !v)}
-              aria-expanded={categoriesOpen}
-              aria-haspopup="menu"
-              className="group flex items-center gap-1.5 text-sm font-semibold text-gray-500 hover:text-black transition-colors"
-            >
-              Categories
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className={`transition-all duration-200 group-hover:scale-125 group-hover:text-brand ${
-                  categoriesOpen ? 'rotate-180' : ''
-                }`}
-              >
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </button>
-
-            {categoriesOpen && (
-              <div className="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-50">
-                <ul className="py-1 max-h-96 overflow-y-auto">
-                  {categories.map((c) => (
-                    <li key={c.slug}>
-                      <NavLink
-                        to={`/products?category=${c.slug}`}
-                        onClick={() => setCategoriesOpen(false)}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-brand transition-colors"
-                      >
-                        {c.name}
-                      </NavLink>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
-
-          <Link
-            to="/products"
-            className="text-sm font-semibold text-gray-500 hover:text-black hover:underline decoration-2 underline-offset-4 hover:decoration-brand"
-          >
-            Products
-          </Link>
-
-          <Link
-            to="/about"
-            className="text-sm font-semibold text-gray-500 hover:text-black hover:underline decoration-2 underline-offset-4 hover:decoration-brand"
-          >
-            About
-          </Link>
-        </nav>
-
+        {/* Left group: logo + nav */}
         <div className="flex items-center gap-4">
+          <Link to="/" className="flex items-center shrink-0">
+            {/* small*/}
+            <img
+              src={smallLogo}
+              alt="CBGinfotech"
+              className="block h-7 w-auto xs:hidden"
+            />
+
+            {/* medium*/}
+            <img
+              src={mediumLogo}
+              alt="CBGinfotech"
+              className="hidden h-7 w-auto xs:block md:hidden"
+            />
+
+            {/* large*/}
+            <img
+              src={largeLogo}
+              alt="CBGinfotech"
+              className="hidden h-8 w-auto md:block"
+            />
+          </Link>
+
+          <NavMenu />
+
+          <nav className="md:flex hidden items-center gap-6">
+            <Link
+              to="/"
+              className="text-sm font-semibold text-gray-500 hover:text-black hover:underline decoration-2 underline-offset-4 hover:decoration-brand"
+            >
+              Home
+            </Link>
+
+            {/* Categories dropdown */}
+            <div className="relative" ref={categoriesRef}>
+              <button
+                type="button"
+                onClick={() => setCategoriesOpen((v) => !v)}
+                aria-expanded={categoriesOpen}
+                aria-haspopup="menu"
+                className="group flex items-center gap-1.5 text-sm font-semibold text-gray-500 hover:text-black transition-colors"
+              >
+                Categories
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className={`transition-all duration-200 group-hover:scale-125 group-hover:text-brand ${
+                    categoriesOpen ? 'rotate-180' : ''
+                  }`}
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+
+              {categoriesOpen && (
+                <div className="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-50">
+                  <ul className="py-1 max-h-96 overflow-y-auto">
+                    {categories.map((c) => (
+                      <li key={c.slug}>
+                        <NavLink
+                          to={`/products?category=${c.slug}`}
+                          onClick={() => setCategoriesOpen(false)}
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-brand transition-colors"
+                        >
+                          {c.name}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+
+            <Link
+              to="/products"
+              className="text-sm font-semibold text-gray-500 hover:text-black hover:underline decoration-2 underline-offset-4 hover:decoration-brand"
+            >
+              Products
+            </Link>
+
+            <Link
+              to="/about"
+              className="text-sm font-semibold text-gray-500 hover:text-black hover:underline decoration-2 underline-offset-4 hover:decoration-brand"
+            >
+              About
+            </Link>
+          </nav>
+        </div>
+
+        {/* Right group: search + cart + account */}
+        <div className="flex items-center gap-4">
+          <Search />
+
+          {/* Cart */}
           <Link
             to="/cart"
-            className="group relative flex items-center gap-2 text-gray-700 hover:text-black transition-colors text-sm font-medium"
+            className="group relative flex items-center gap-2 mr-2 text-gray-700 hover:text-black transition-colors"
+            aria-label="Cart"
           >
-            Cart
+            {/* lg and up: "Cart" text */}
+            <span className="hidden lg:inline text-sm font-medium">Cart</span>
+            {/* md and below: icon */}
+            <span className="inline lg:hidden">
+              <CartIcon />
+            </span>
+
             {itemCount > 0 && (
               <span className="absolute -top-1.25 -right-2.75 transition-transform duration-200 group-hover:scale-125">
                 <span
@@ -159,21 +231,28 @@ export default function Header() {
               onClick={() => setUserMenuOpen((v) => !v)}
               aria-label="Account menu"
               aria-expanded={userMenuOpen}
-              className="group flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-black transition-colors"
+              className="group flex items-center gap-0.5 text-sm font-medium text-gray-700 hover:text-black transition-colors"
             >
-              <span className="hidden sm:inline">
+              {/* lg and up: first name */}
+              <span className="hidden lg:inline">
                 {user?.name?.split(' ')[0] ?? 'Account'}
               </span>
+              {/* md and below: icon */}
+              <span className="inline lg:hidden">
+                <AccountIcon />
+              </span>
+
+              {/* Chevron — hidden below lg alongside the name */}
               <svg
-                width="16"
-                height="16"
+                width="12"
+                height="12"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2"
+                strokeWidth="3"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className={`transition-transform duration-200 group-hover:scale-125 group-hover:text-brand ${
+                className={`hidden lg:block transition-transform duration-200 group-hover:scale-125 group-hover:text-brand ${
                   userMenuOpen ? 'rotate-180' : ''
                 }`}
               >
@@ -236,4 +315,4 @@ export default function Header() {
       </div>
     </header>
   );
-          }
+}

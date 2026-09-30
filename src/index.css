@@ -13,7 +13,8 @@
 
 @theme {
   --color-brand: #ef4444;
-  --color-brand-dark: #d03a3a;
+  --color-brand-dark: #dc2626;
+  --breakpoint-xs: 35rem;
 }
 
 .animate-pulse-scale {

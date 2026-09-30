@@ -47,7 +47,7 @@ export default function BrandAccordion({
         if (!panel) return;
         const isActive = i === active;
         const text = textRefs.current[i];
-        const logo = logoRefs.current[i];
+        const largeLogo = logoRefs.current[i];
 
         tl.to(
           panel,
@@ -63,9 +63,9 @@ export default function BrandAccordion({
           );
         }
 
-        if (logo) {
+        if (largeLogo) {
           tl.to(
-            logo,
+            largeLogo,
             {
               opacity: isActive ? 1 : 0,
               scale: isActive ? 1 : 0.9,
