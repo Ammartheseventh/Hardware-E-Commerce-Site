@@ -3,7 +3,7 @@ import { useAsync } from '../hooks/useAsync';
 import { usePageTitle } from '../hooks/usePageTitle';
 import ProductSection from '../components/catalog/ProductSection';
 import BrandsSection from '../components/home/BrandsSection';
-import HeroSearch from '../components/home/HeroSearch';
+import { Link } from 'react-router-dom';
 
 export default function HomePage() {
   usePageTitle();
@@ -21,6 +21,12 @@ export default function HomePage() {
           Curated components and equipment, hand-picked for performance and
           reliability.
         </p>
+        <Link
+          to="/products"
+          className="inline-block mt-10 px-8 py-3 bg-brand text-white text-sm font-semibold rounded-full hover:bg-brand-dark transition-colors"
+        >
+          Shop Now
+        </Link>
       </section>
 
       <ProductSection
