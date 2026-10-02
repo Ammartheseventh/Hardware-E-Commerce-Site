@@ -7,7 +7,7 @@ export default function BrandsSection() {
       <h2 className="text-xl font-semibold tracking-tight mb-8">
         Shop by brand
       </h2>
-      <BrandAccordion items={brands} height={220} defaultIndex={0} />
+      <BrandAccordion items={brands} defaultIndex={0} />
     </section>
   );
 }

@@ -6,17 +6,16 @@ const DEFAULT_BRANDS = [];
 export default function BrandAccordion({
   items = DEFAULT_BRANDS,
   defaultIndex = 0,
-  height = 220,
+  height = 180,
   gap = 8,
   radius = 12,
-  expandRatio = 0.4,
+  expandRatio = 0.25,
   duration = 0.5,
   ease = 'power3.out',
   className = '',
   brandClassName = '',
 }) {
   const panelRefs = useRef([]);
-  const textRefs = useRef([]);
   const logoRefs = useRef([]);
   const tlRef = useRef(null);
   const firstRunRef = useRef(true);
@@ -46,8 +45,7 @@ export default function BrandAccordion({
       panels.forEach((panel, i) => {
         if (!panel) return;
         const isActive = i === active;
-        const text = textRefs.current[i];
-        const largeLogo = logoRefs.current[i];
+        const logo = logoRefs.current[i];
 
         tl.to(
           panel,
@@ -55,20 +53,12 @@ export default function BrandAccordion({
           0
         );
 
-        if (text) {
+        if (logo) {
           tl.to(
-            text,
-            { opacity: isActive ? 0 : 1, duration: dur, ease },
-            0
-          );
-        }
-
-        if (largeLogo) {
-          tl.to(
-            largeLogo,
+            logo,
             {
-              opacity: isActive ? 1 : 0,
-              scale: isActive ? 1 : 0.9,
+              opacity: isActive ? 1 : 0.65,
+              scale: isActive ? 1 : 0.6,
               duration: dur,
               ease,
             },
@@ -116,13 +106,11 @@ export default function BrandAccordion({
 
   return (
     <>
-      {/* ============================================================ */}
-      {/* MOBILE — only renders below md. Square logo cards, no text.  */}
-      {/* ============================================================ */}
+      {/* MOBILE — Square logo cards, no text. */}
       <div
         className={`
-          md:hidden flex flex-row overflow-x-auto snap-x snap-proximity
-          [scrollbar-width:none] [-ms-overflow-style:none]
+          xl:hidden flex flex-row overflow-x-auto snap-x snap-proximity
+          scrollbar-none [-ms-overflow-style:none]
           [&::-webkit-scrollbar]:hidden
           ${className}
         `}
@@ -134,7 +122,7 @@ export default function BrandAccordion({
           <a
             key={item.name}
             href={item.link}
-            className="shrink-0 snap-start w-24 h-24 rounded-xl border border-gray-200 bg-gray-50 hover:border-gray-300 transition-colors flex items-center justify-center p-4 no-underline outline-none focus-visible:ring-2 focus-visible:ring-black"
+            className="shrink-0 snap-start w-24 h-24 sm:h-28 sm:min-w-24 sm:max-w-40 sm:flex-1 rounded-xl border border-gray-200 bg-gray-50 hover:border-gray-300 transition-colors flex items-center justify-center p-4 no-underline outline-none focus-visible:ring-2 focus-visible:ring-black"
             aria-label={item.name}
             role="listitem"
           >
@@ -148,15 +136,13 @@ export default function BrandAccordion({
         ))}
       </div>
 
-      {/* ============================================================ */}
-      {/* DESKTOP — only renders at md and up. Untouched accordion.    */}
-      {/* ============================================================ */}
+      {/* DESKTOP — logos in both states, scaling on activation. */}
       <div
         className={`
-          hidden md:flex flex-row w-full
-          max-md:overflow-x-auto max-md:snap-x max-md:snap-proximity
-          max-md:[scrollbar-width:none] max-md:[-ms-overflow-style:none]
-          max-md:[&::-webkit-scrollbar]:hidden
+          hidden xl:flex flex-row w-full
+          max-xl:overflow-x-auto max-xl:snap-x max-xl:snap-proximity
+          max-xl:scrollbar-none max-xl:[-ms-overflow-style:none]
+          max-xl:[&::-webkit-scrollbar]:hidden
           ${className}
         `}
         style={{ gap: `${gap}px`, height: `${height}px` }}
@@ -172,7 +158,7 @@ export default function BrandAccordion({
               href={item.link}
               className={`
                 group relative block min-w-0 min-h-0 flex-[1_1_0]
-                max-md:min-w-[72px] max-md:shrink-0 max-md:snap-start
+                max-xl:min-w-18 max-xl:shrink-0 max-xl:snap-start
                 cursor-pointer overflow-hidden
                 bg-gray-50 border border-gray-200 hover:border-gray-300
                 transition-colors no-underline outline-none
@@ -192,30 +178,19 @@ export default function BrandAccordion({
               aria-current={isActive ? 'true' : undefined}
             >
               <span
-                ref={(el) => (textRefs.current[i] = el)}
-                className="absolute inset-0 flex items-center justify-center pointer-events-none"
-              >
-                <span
-                  className="text-lg font-bold  text-gray-900 whitespace-nowrap"
-                  style={{
-                    writingMode: 'vertical-rl',
-                    transform: 'rotate(180deg)',
-                    letterSpacing: '0.02em',
-                  }}
-                >
-                  {item.name}
-                </span>
-              </span>
-
-              <span
                 ref={(el) => (logoRefs.current[i] = el)}
-                className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 px-4"
+                className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                style={{
+                  opacity: isActive ? 1 : 0.65,
+                  paddingLeft: isActive? '12px' : '0',
+                  paddingRight: isActive? '12px' : '0'
+                 }}
               >
                 <img
                   src={item.logo}
                   alt={item.name}
                   draggable="false"
-                  className="max-h-32 max-w-[80%] object-contain select-none"
+                  className="w-full h-full max-h-28 object-contain select-none"
                   style={{ WebkitUserDrag: 'none' }}
                 />
               </span>
